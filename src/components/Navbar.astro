@@ -1,0 +1,200 @@
+---
+import type { NavContent } from "../i18n/getContent";
+
+interface Props {
+  nav: NavContent;
+  lang: "es" | "en";
+}
+
+const { nav, lang } = Astro.props;
+const otherLang = lang === "es" ? "en" : "es";
+const otherLangLabel = lang === "es" ? "EN" : "ES";
+---
+
+<header
+  id="site-header"
+  class="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
+  style="background: transparent;"
+>
+  <div class="container-site">
+    <nav class="flex items-center justify-between gap-8 h-16 md:h-20 text-md">
+      <!-- Logo -->
+      <a
+        href={`/${lang === "es" ? "" : "en"}`}
+        class="items-center w-40 gap-2 text-ink no-underline"
+        aria-label="Contextual — inicio"
+      >
+        <img
+          src="/public/images/logo.webp"
+          class="w-40"
+          style="opacity: 0;"
+          id="logo-contextual"
+        />
+      </a>
+
+      <!-- Desktop nav -->
+      <ul
+        class="hidden lg:flex items-center gap-8 list-none text-sm text-center"
+      >
+        {
+          [
+            { href: "#what", label: nav.what },
+            { href: "#solutions", label: nav.solutions },
+            { href: "#how", label: nav.how },
+            { href: "#areas", label: nav.areas },
+            { href: "#team", label: nav.team },
+            { href: "#network", label: nav.network },
+          ].map(({ href, label }) => (
+            <li>
+              <a
+                href={href}
+                class="text-ink-muted hover:text-ink transition-colors duration-200 no-underline"
+              >
+                {label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+
+      <!-- Right: CTA + lang toggle + hamburger -->
+      <div class="flex items-center gap-3">
+        <a
+          href="#contact"
+          class="hidden md:inline-flex items-center px-5 py-2.5 rounded bg-primary-500 text-white text-sm no-underline hover:bg-primary-400 transition-colors duration-200"
+        >
+          {nav.cta}
+        </a>
+
+        <!-- Lang toggle -->
+        <a
+          href={`/${otherLang === "en" ? "en" : ""}`}
+          class="px-3 py-1.5 rounded-sm border border-secondary-500 text-ink-muted hover:text-ink hover:border-ink transition-colors duration-200 text-sm no-underline font-medium"
+          aria-label={`Switch to ${otherLangLabel}`}
+        >
+          {otherLangLabel}
+        </a>
+
+        <!-- Mobile hamburger -->
+        <button
+          id="menu-toggle"
+          class="lg:hidden flex flex-col gap-1.5 p-2 cursor-pointer bg-transparent border-none"
+          aria-label="Toggle menu"
+          aria-expanded="false"
+        >
+          <span
+            class="block w-5 h-px bg-ink transition-all duration-200"
+            id="bar1"></span>
+          <span
+            class="block w-5 h-px bg-ink transition-all duration-200"
+            id="bar2"></span>
+          <span
+            class="block w-4 h-px bg-ink transition-all duration-200"
+            id="bar3"></span>
+        </button>
+      </div>
+    </nav>
+  </div>
+
+  <!-- Mobile menu -->
+  <div
+    id="mobile-menu"
+    class="lg:hidden hidden bg-[var(--color-surface)] border-t border-[var(--color-secondary-400)]"
+  >
+    <div class="container-site py-6">
+      <ul class="flex flex-col gap-4 list-none">
+        {
+          [
+            { href: "#what", label: nav.what },
+            { href: "#solutions", label: nav.solutions },
+            { href: "#how", label: nav.how },
+            { href: "#areas", label: nav.areas },
+            { href: "#team", label: nav.team },
+            { href: "#network", label: nav.network },
+          ].map(({ href, label }) => (
+            <li>
+              <a
+                href={href}
+                class="type-normal text-[var(--color-ink)] no-underline mobile-nav-link"
+              >
+                {label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+      <a
+        href="#contact"
+        class="mt-6 inline-flex items-center px-5 py-2.5 rounded-[var(--radius-pill)] bg-[var(--color-primary-500)] text-white type-normal text-sm no-underline mobile-nav-link"
+      >
+        {nav.cta}
+      </a>
+    </div>
+  </div>
+</header>
+
+<!-- Spacer so content doesn't hide behind fixed nav -->
+<div class="h-16 md:h-20"></div>
+<div
+  class="flex items-center justify-center gap-2 text-ink no-underline"
+  aria-label="Contextual — inicio"
+>
+  <img src="/public/images/logo.webp" class="w-80 my-11" />
+</div>
+
+<script>
+  // Scroll: add background to navbar
+  const header = document.getElementById("site-header");
+  const logo = document.getElementById("logo-contextual");
+  window.addEventListener("scroll", () => {
+    const opacityVal = window.scrollY / 500;
+    if (logo) logo.style.opacity = (opacityVal > 1 ? 1 : opacityVal) + "";
+    if (window.scrollY > 20) {
+      logo?.classList.replace("hidden", "flex");
+      header?.setAttribute(
+        "style",
+        "background: rgba(255,255,255,0.95); backdrop-filter: blur(8px); box-shadow: 0 1px 0 var(--color-secondary-400);",
+      );
+    } else {
+      logo?.classList.replace("flex", "hidden");
+      header?.setAttribute("style", "background: transparent;");
+    }
+  });
+
+  // Mobile menu toggle
+  const toggle = document.getElementById("menu-toggle");
+  const menu = document.getElementById("mobile-menu");
+  const bar1 = document.getElementById("bar1");
+  const bar2 = document.getElementById("bar2");
+  const bar3 = document.getElementById("bar3");
+
+  toggle?.addEventListener("click", () => {
+    const isOpen = menu?.classList.toggle("hidden") === false;
+    toggle.setAttribute(
+      "aria-expanded",
+      String(!menu?.classList.contains("hidden")),
+    );
+    if (!menu?.classList.contains("hidden")) {
+      bar1!.style.transform = "translateY(6px) rotate(45deg)";
+      bar2!.style.opacity = "0";
+      bar3!.style.transform = "translateY(-6px) rotate(-45deg)";
+      bar3!.style.width = "20px";
+    } else {
+      bar1!.style.transform = "";
+      bar2!.style.opacity = "";
+      bar3!.style.transform = "";
+      bar3!.style.width = "";
+    }
+  });
+
+  // Close mobile menu on link click
+  document.querySelectorAll(".mobile-nav-link").forEach((link) => {
+    link.addEventListener("click", () => {
+      menu?.classList.add("hidden");
+      bar1!.style.transform = "";
+      bar2!.style.opacity = "";
+      bar3!.style.transform = "";
+      bar3!.style.width = "";
+    });
+  });
+</script>

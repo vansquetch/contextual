@@ -1,0 +1,47 @@
+---
+interface HowItem {
+  id: string;
+  title: string;
+  body: string;
+}
+
+interface Props {
+  how: { title: string; items: HowItem[] };
+}
+
+const { how } = Astro.props;
+---
+
+<section id="how" class="section-gap bg-[var(--color-ink)]">
+  <div class="container-site">
+    <!-- Section header -->
+    <div class="mb-14">
+      <h2 class="type-t4 text-[var(--color-surface)]">{how.title}</h2>
+      <div
+        class="mt-4 w-12 h-0.5 bg-[var(--color-accent-500)]"
+        aria-hidden="true"
+      ></div>
+    </div>
+
+    <!-- Three pillars -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-px bg-[var(--color-ink-muted)]">
+      {
+        how.items.map((item, i) => (
+          <div class="bg-[var(--color-ink)] p-8 md:p-10">
+            <!-- Accent top border on active/first -->
+            <div
+              class={`h-0.5 w-8 mb-8 ${i === 1 ? "bg-[var(--color-accent-500)]" : "bg-[var(--color-primary-500)]"}`}
+              aria-hidden="true"
+            />
+            <h3 class="type-medium text-[var(--color-surface)] mb-4">
+              {item.title}
+            </h3>
+            <p class="type-normal text-[var(--color-secondary-500)]">
+              {item.body}
+            </p>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

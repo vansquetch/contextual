@@ -1,0 +1,304 @@
+{
+  "es": {
+    "nav": {
+      "what": "Qué hacemos",
+      "solutions": "Soluciones",
+      "how": "Cómo trabajamos",
+      "areas": "Áreas",
+      "team": "Equipo",
+      "network": "Red y Colaboración",
+      "contact": "Contacto",
+      "cta": "Contactar"
+    },
+    "hero": {
+      "headline": "Diseñamos y habilitamos soluciones a problemas públicos complejos.",
+      "body": "Contextual trabaja con gobiernos, multilaterales y actores del sector privado para traducir prioridades estratégicas en acción implementable en seguridad, justicia, gobernanza urbana y entrega institucional.",
+      "body2": "Ayudamos a instituciones e inversionistas a reducir el riesgo operacional, fortalecer la capacidad de implementación y navegar entornos políticos y territoriales complejos.",
+      "cta": "Agendar una conversación"
+    },
+    "what": {
+      "title": "Qué hacemos",
+      "items": [
+        {
+          "id": "security",
+          "title": "Seguridad y Justicia",
+          "body": "Apoyamos a gobiernos e instituciones en el diseño e implementación de estrategias de seguridad ciudadana, justicia y prevención de la violencia."
+        },
+        {
+          "id": "urban",
+          "title": "Gobernanza Urbana",
+          "body": "Ayudamos a ciudades e instituciones a coordinar desafíos urbanos complejos a través de enfoques integrados y con arraigo territorial."
+        },
+        {
+          "id": "delivery",
+          "title": "Entrega Institucional",
+          "body": "Diseñamos sistemas de implementación, mecanismos de coordinación y estructuras de seguimiento estratégico que ayudan a las organizaciones a ejecutar prioridades bajo restricciones del mundo real."
+        },
+        {
+          "id": "innovation",
+          "title": "Innovación Pública y Asesoría de Riesgo",
+          "body": "Ayudamos a organizaciones y actores del sector privado a navegar la complejidad operacional, institucional y territorial para fortalecer la toma de decisiones y reducir el riesgo."
+        }
+      ]
+    },
+    "solutions": {
+      "title": "Soluciones",
+      "items": [
+        {
+          "id": "clinics",
+          "title": "Clínicas Ejecutivas",
+          "body": "Sesiones intensivas de trabajo estratégico diseñadas para alinear tomadores de decisión, instituciones y prioridades operativas en torno a desafíos complejos."
+        },
+        {
+          "id": "units",
+          "title": "Unidades de Entrega",
+          "body": "Diseñamos y apoyamos estructuras de seguimiento estratégico que ayudan a las instituciones a coordinar, monitorear y sostener prioridades de implementación."
+        },
+        {
+          "id": "roadmaps",
+          "title": "Hojas de Ruta de Implementación Estratégica",
+          "body": "Traducimos prioridades políticas, institucionales y operativas en rutas concretas de implementación."
+        },
+        {
+          "id": "risk",
+          "title": "Asesoría de Riesgo y Contexto",
+          "body": "Ayudamos a organizaciones e inversionistas a comprender y reducir los riesgos operacionales, territoriales e institucionales en entornos complejos."
+        }
+      ]
+    },
+    "how": {
+      "title": "Cómo trabajamos",
+      "items": [
+        {
+          "id": "political",
+          "title": "Realidad Política",
+          "body": "Trabajamos dentro de restricciones políticas, institucionales y fiscales reales."
+        },
+        {
+          "id": "evidence",
+          "title": "Evidencia e Inteligencia",
+          "body": "Combinamos datos, análisis territorial e inteligencia operativa para priorizar la acción."
+        },
+        {
+          "id": "capacity",
+          "title": "Capacidad de Implementación",
+          "body": "Ayudamos a las instituciones a coordinar actores, fortalecer la ejecución y sostener la implementación en el tiempo."
+        }
+      ]
+    },
+    "areas": {
+      "title": "Áreas de Trabajo Seleccionadas",
+      "items": [
+        "Violencia urbana y seguridad ciudadana",
+        "Coordinación interinstitucional",
+        "Prevención de la violencia",
+        "Reforma institucional",
+        "Sistemas penitenciarios y carcelarios",
+        "Crimen organizado y gobernanza territorial",
+        "Gestión urbana y espacio público",
+        "Innovación pública y sistemas de implementación"
+      ]
+    },
+    "team": {
+      "title": "Equipo",
+      "members": [
+        {
+          "id": "enrique",
+          "name": "Enrique Betancourt",
+          "role": "Co-Fundador",
+          "bio": "Enrique Betancourt es estratega en política pública, innovación pública y gobernanza urbana con experiencia en seguridad, justicia y reforma institucional en América Latina. Fue Director Ejecutivo del Centro Nacional de Prevención del Delito de México y trabajó en la Unidad de Entrega Presidencial del Gobierno de México. Tiene una Maestría en Diseño Urbano de la Universidad de Harvard."
+        },
+        {
+          "id": "jairo",
+          "name": "Jairo García Guerrero",
+          "role": "Co-Fundador",
+          "bio": "Jairo García Guerrero es un experto sénior en seguridad con más de 25 años de experiencia en seguridad ciudadana, justicia y política de defensa en Colombia y Ecuador. Ha ocupado posiciones de liderazgo incluyendo Secretario de Seguridad de Bogotá, Secretario de Seguridad y Justicia de Cali, y Viceministro de Estrategia y Planeación del Ministerio de Defensa de Colombia. Estudió Ciencia Política y Gobierno en la Universidad de los Andes."
+        },
+        {
+          "id": "flavia",
+          "name": "Flávia Carbonari",
+          "role": "Especialista",
+          "bio": "Flávia Carbonari es especialista en desarrollo internacional y seguridad ciudadana con experiencia asesorando a gobiernos e instituciones globales en América Latina y África. Ha trabajado con el Banco Mundial, el Banco Interamericano de Desarrollo y la CAF en prevención de la violencia, género e inclusión social. Tiene una Maestría de la Universidad de Georgetown."
+        },
+        {
+          "id": "michel",
+          "name": "Michel Camacho",
+          "role": "Experto",
+          "bio": "Michel Camacho es experto en políticas públicas y justicia penal, especializado en seguridad ciudadana, estado de derecho y reforma institucional en el Caribe. Ha asesorado al Banco Interamericano de Desarrollo, USAID e instituciones de justicia en reforma policial y crimen organizado. Tiene un LL.M. de la Universidad de Georgetown como Becario Fulbright."
+        }
+      ]
+    },
+    "network": {
+      "title": "Red y Colaboración",
+      "body": "Contextual colabora con gobiernos, multilaterales, universidades, think tanks y actores del sector privado en América Latina y más allá.",
+      "label": "Redes y colaboraciones seleccionadas incluyen:"
+    },
+    "contact": {
+      "title": "Contáctenos",
+      "subtitle": "Nos comunicaremos con usted a la brevedad",
+      "fields": {
+        "name": "Nombre",
+        "surname": "Apellido",
+        "email": "Correo electrónico",
+        "message": "Mensaje"
+      },
+      "cta": "Enviar"
+    },
+    "footer": {
+      "location": "Washington, DC",
+      "email": "hello@itscontextual.com",
+      "site": "itscontextual.com"
+    }
+  },
+  "en": {
+    "nav": {
+      "what": "What we do",
+      "solutions": "Solutions",
+      "how": "How we work",
+      "areas": "Areas",
+      "team": "Team",
+      "network": "Network & Collab",
+      "contact": "Contact",
+      "cta": "Contact"
+    },
+    "hero": {
+      "headline": "Designing and enabling solutions to complex public problems.",
+      "body": "Contextual works with governments, multilaterals, and private sector actors to translate strategic priorities into implementable action across security, justice, urban governance, and institutional delivery.",
+      "body2": "We help institutions and investors reduce operational risk, strengthen implementation capacity, and navigate complex political and territorial environments.",
+      "cta": "Schedule a Conversation"
+    },
+    "what": {
+      "title": "What we do",
+      "items": [
+        {
+          "id": "security",
+          "title": "Security & Justice",
+          "body": "We support governments and institutions in the design and implementation of citizen security, justice, and violence prevention strategies."
+        },
+        {
+          "id": "urban",
+          "title": "Urban Governance",
+          "body": "We help cities and institutions coordinate complex urban challenges through integrated and territorially grounded approaches."
+        },
+        {
+          "id": "delivery",
+          "title": "Institutional Delivery",
+          "body": "We design implementation systems, coordination mechanisms, and strategic follow-up structures that help organizations execute priorities under real-world constraints."
+        },
+        {
+          "id": "innovation",
+          "title": "Public Innovation & Risk Advisory",
+          "body": "We help organizations and private sector actors navigate operational, institutional, and territorial complexity to strengthen decision-making and reduce risk."
+        }
+      ]
+    },
+    "solutions": {
+      "title": "Solutions",
+      "items": [
+        {
+          "id": "clinics",
+          "title": "Executive Clinics",
+          "body": "Intensive strategic work sessions designed to align decisionmakers, institutions, and operational priorities around complex challenges."
+        },
+        {
+          "id": "units",
+          "title": "Delivery Units",
+          "body": "We design and support strategic follow-up structures that help institutions coordinate, monitor, and sustain implementation priorities."
+        },
+        {
+          "id": "roadmaps",
+          "title": "Strategic Implementation Roadmaps",
+          "body": "We translate political, institutional, and operational priorities into concrete implementation pathways."
+        },
+        {
+          "id": "risk",
+          "title": "Risk & Context Advisory",
+          "body": "We help organizations and investors understand and reduce operational, territorial, and institutional risks in complex environments."
+        }
+      ]
+    },
+    "how": {
+      "title": "How we work",
+      "items": [
+        {
+          "id": "political",
+          "title": "Political Reality",
+          "body": "We work within real political, institutional, and fiscal constraints."
+        },
+        {
+          "id": "evidence",
+          "title": "Evidence & Intelligence",
+          "body": "We combine data, territorial analysis, and operational insight to prioritize action."
+        },
+        {
+          "id": "capacity",
+          "title": "Implementation Capacity",
+          "body": "We help institutions coordinate actors, strengthen execution, and sustain implementation over time."
+        }
+      ]
+    },
+    "areas": {
+      "title": "Selected Areas of Work",
+      "items": [
+        "Urban violence and citizen security",
+        "Interinstitutional coordination",
+        "Violence prevention",
+        "Institutional reform",
+        "Prison and correctional systems",
+        "Organized crime and territorial governance",
+        "Urban management and public space",
+        "Public innovation and implementation systems"
+      ]
+    },
+    "team": {
+      "title": "Team",
+      "members": [
+        {
+          "id": "enrique",
+          "name": "Enrique Betancourt",
+          "role": "Co-Founder",
+          "bio": "Enrique Betancourt is a public policy, public innovation, and urban governance strategist with experience in security, justice, and institutional reform across Latin America. He previously served as Executive Director of Mexico's National Center for Crime Prevention and worked within the Presidential Delivery Unit of the Government of Mexico. He holds a Master in Urban Design from Harvard University."
+        },
+        {
+          "id": "jairo",
+          "name": "Jairo García Guerrero",
+          "role": "Co-Founder",
+          "bio": "Jairo García Guerrero is a senior security expert with more than 25 years of experience in citizen security, justice, and defense policy in Colombia and Ecuador. He has held senior leadership positions including Secretary of Security for Bogotá, Secretary of Security and Justice for Cali, and Vice Minister of Strategy and Planning at Colombia's Ministry of Defense. He studied Political Science and Government at Universidad de los Andes."
+        },
+        {
+          "id": "flavia",
+          "name": "Flávia Carbonari",
+          "role": "Specialist",
+          "bio": "Flávia Carbonari is an international development and citizen security specialist with experience advising governments and global institutions across Latin America and Africa. She has worked with the World Bank, Inter-American Development Bank, and CAF on violence prevention, gender, and social inclusion. She holds a Master's degree from Georgetown University."
+        },
+        {
+          "id": "michel",
+          "name": "Michel Camacho",
+          "role": "Expert",
+          "bio": "Michel Camacho is a public policy and criminal justice expert specializing in citizen security, rule of law, and institutional reform in the Caribbean. He has advised the Inter-American Development Bank, USAID, and justice institutions on police reform and organized crime. He holds an LL.M. from Georgetown University as a Fulbright Scholar."
+        }
+      ]
+    },
+    "network": {
+      "title": "Network and Collaboration",
+      "body": "Contextual collaborates with governments, multilaterals, universities, think tanks, and private sector actors across Latin America and beyond.",
+      "label": "Selected networks and collaborations include:"
+    },
+    "contact": {
+      "title": "Contact Us",
+      "subtitle": "We will contact you as soon as possible",
+      "fields": {
+        "name": "Name",
+        "surname": "Surname",
+        "email": "Email",
+        "message": "Message"
+      },
+      "cta": "Submit"
+    },
+    "footer": {
+      "location": "Washington, DC",
+      "email": "hello@itscontextual.com",
+      "site": "itscontextual.com"
+    }
+  }
+}

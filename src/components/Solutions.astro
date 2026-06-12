@@ -1,0 +1,64 @@
+---
+interface SolutionItem {
+  id: string;
+  title: string;
+  body: string;
+}
+
+interface Props {
+  solutions: { title: string; items: SolutionItem[] };
+}
+
+const { solutions } = Astro.props;
+---
+
+<section id="solutions" class="section-gap bg-[var(--color-surface)]">
+  <div class="container-site">
+    <!-- Section header -->
+    <div class="mb-14">
+      <h2 class="type-t4 text-[var(--color-ink)]">{solutions.title}</h2>
+      <div
+        class="mt-4 w-12 h-0.5 bg-[var(--color-accent-500)]"
+        aria-hidden="true"
+      ></div>
+    </div>
+
+    <!-- Solutions list — stacked with a vertical left border accent -->
+    <div class="flex flex-col gap-0">
+      {
+        solutions.items.map((item, i) => (
+          <div
+            class="group flex gap-8 py-10 border-b border-[var(--color-secondary-400)] first:border-t first:border-[var(--color-secondary-400)]"
+          >
+            <!-- Index marker -->
+            <div
+              class="hidden md:flex flex-col items-center pt-1"
+              aria-hidden="true"
+            >
+              <span class="type-normal text-xs text-[var(--color-accent-500)] font-semibold tabular-nums w-8 text-right">
+                0{i + 1}
+              </span>
+            </div>
+
+            <!-- Content -->
+            <div class="flex-1">
+              <h3 class="type-medium text-[var(--color-ink)] mb-3 group-hover:text-[var(--color-primary-500)] transition-colors duration-200">
+                {item.title}
+              </h3>
+              <p class="type-normal text-[var(--color-ink-muted)] max-w-2xl">
+                {item.body}
+              </p>
+            </div>
+
+            <!-- Arrow — visible on hover -->
+            <div class="hidden md:flex items-center text-[var(--color-primary-200)] group-hover:text-[var(--color-primary-500)] transition-colors duration-200">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                <path d="M4 10h12M12 6l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

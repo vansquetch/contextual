@@ -1,0 +1,160 @@
+---
+interface ContactContent {
+  title: string;
+  subtitle: string;
+  fields: { name: string; surname: string; email: string; message: string };
+  cta: string;
+}
+
+interface Props {
+  contact: ContactContent;
+}
+
+const { contact } = Astro.props;
+---
+
+<section id="contact" class="section-gap bg-[var(--color-surface)]">
+  <div class="container-site">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+      <!-- Left: heading + address -->
+      <div>
+        <h2 class="type-t4 text-[var(--color-ink)] mb-4">{contact.title}</h2>
+        <div
+          class="mt-0 mb-8 w-12 h-0.5 bg-[var(--color-accent-500)]"
+          aria-hidden="true"
+        ></div>
+        <p class="type-normal text-[var(--color-ink-muted)] mb-8">
+          {contact.subtitle}
+        </p>
+
+        <!-- Address block -->
+        <address
+          class="not-italic flex flex-col gap-2 type-normal text-[var(--color-ink-muted)]"
+        >
+          <span>Washington, DC</span>
+          <a
+            href="mailto:hello@itscontextual.com"
+            class="text-[var(--color-primary-500)] hover:text-[var(--color-primary-400)] no-underline transition-colors duration-200"
+          >
+            hello@itscontextual.com
+          </a>
+          <a
+            href="https://itscontextual.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-[var(--color-ink-muted)] hover:text-[var(--color-ink)] no-underline transition-colors duration-200"
+          >
+            itscontextual.com
+          </a>
+        </address>
+      </div>
+
+      <!-- Right: form -->
+      <div>
+        <form
+          class="flex flex-col gap-5"
+          name="contact"
+          method="POST"
+          data-netlify="true"
+          novalidate
+        >
+          <!-- Name row -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+            <div class="flex flex-col gap-2">
+              <label
+                for="name"
+                class="type-normal text-sm font-medium text-[var(--color-ink)]"
+              >
+                {contact.fields.name}
+              </label>
+              <input
+                id="name"
+                name="name"
+                type="text"
+                required
+                autocomplete="given-name"
+                class="px-4 py-3 rounded-[var(--radius-sm)] border border-[var(--color-secondary-400)] bg-[var(--color-secondary-100)] type-normal text-[var(--color-ink)] placeholder:text-[var(--color-ink-muted)] focus:border-[var(--color-primary-500)] focus:bg-white focus:outline-none transition-colors duration-200"
+              />
+            </div>
+            <div class="flex flex-col gap-2">
+              <label
+                for="surname"
+                class="type-normal text-sm font-medium text-[var(--color-ink)]"
+              >
+                {contact.fields.surname}
+              </label>
+              <input
+                id="surname"
+                name="surname"
+                type="text"
+                required
+                autocomplete="family-name"
+                class="px-4 py-3 rounded-[var(--radius-sm)] border border-[var(--color-secondary-400)] bg-[var(--color-secondary-100)] type-normal text-[var(--color-ink)] placeholder:text-[var(--color-ink-muted)] focus:border-[var(--color-primary-500)] focus:bg-white focus:outline-none transition-colors duration-200"
+              />
+            </div>
+          </div>
+
+          <!-- Email -->
+          <div class="flex flex-col gap-2">
+            <label
+              for="email"
+              class="type-normal text-sm font-medium text-[var(--color-ink)]"
+            >
+              {contact.fields.email}
+            </label>
+            <input
+              id="email"
+              name="email"
+              type="email"
+              required
+              autocomplete="email"
+              class="px-4 py-3 rounded-[var(--radius-sm)] border border-[var(--color-secondary-400)] bg-[var(--color-secondary-100)] type-normal text-[var(--color-ink)] placeholder:text-[var(--color-ink-muted)] focus:border-[var(--color-primary-500)] focus:bg-white focus:outline-none transition-colors duration-200"
+            />
+          </div>
+
+          <!-- Message -->
+          <div class="flex flex-col gap-2">
+            <label
+              for="message"
+              class="type-normal text-sm font-medium text-[var(--color-ink)]"
+            >
+              {contact.fields.message}
+            </label>
+            <textarea
+              id="message"
+              name="message"
+              required
+              rows="5"
+              class="px-4 py-3 rounded-[var(--radius-sm)] border border-[var(--color-secondary-400)] bg-[var(--color-secondary-100)] type-normal text-[var(--color-ink)] placeholder:text-[var(--color-ink-muted)] focus:border-[var(--color-primary-500)] focus:bg-white focus:outline-none transition-colors duration-200 resize-y"
+            ></textarea>
+          </div>
+
+          <!-- Submit -->
+          <div>
+            <button
+              type="submit"
+              class="inline-flex items-center gap-2 px-8 py-3.5 rounded-[var(--radius-pill)] bg-[var(--color-primary-500)] text-white type-normal no-underline hover:bg-[var(--color-primary-400)] active:bg-[var(--color-primary-500)] transition-colors duration-200 cursor-pointer border-none font-inherit"
+            >
+              {contact.cta}
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 16 16"
+                fill="none"
+                aria-hidden="true"
+              >
+                <path
+                  d="M3 8h10M9 4l4 4-4 4"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,27 @@
+---
+import "../styles/global.css";
+
+interface Props {
+  lang: "es" | "en";
+  title?: string;
+}
+
+const { lang, title = "Contextual" } = Astro.props;
+---
+
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={lang === "es"
+      ? "Contextual — Diseñamos y habilitamos soluciones a problemas públicos complejos."
+      : "Contextual — Designing and enabling solutions to complex public problems."
+    } />
+    <title>{title}</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>

@@ -1,0 +1,54 @@
+---
+interface Props {
+  network: { title: string; body: string; label: string };
+}
+
+const { network } = Astro.props;
+
+// Partner logos — replace src with actual logo files in /public/logos/
+const partners = [
+  { id: "nyu", name: "NYU — Center on International Cooperation", logo: "/logos/nyu-cic.svg" },
+  { id: "peace", name: "Peace in Our Cities", logo: "/logos/peace-cities.svg" },
+  { id: "worldjustice", name: "World Justice Project", logo: "/logos/world-justice.svg" },
+];
+---
+
+<section id="network" class="section-gap bg-[var(--color-secondary-200)]">
+  <div class="container-site">
+    <!-- Section header -->
+    <div class="mb-10">
+      <h2 class="type-t4 text-[var(--color-ink)]">{network.title}</h2>
+      <div
+        class="mt-4 w-12 h-0.5 bg-[var(--color-accent-500)]"
+        aria-hidden="true"
+      ></div>
+    </div>
+
+    <p class="type-normal text-[var(--color-ink-muted)] max-w-2xl mb-12">
+      {network.body}
+    </p>
+
+    <p class="type-normal text-xs text-[var(--color-ink-muted)] uppercase tracking-widest font-semibold mb-8">
+      {network.label}
+    </p>
+
+    <!-- Logo strip -->
+    <div class="flex flex-wrap items-center gap-12">
+      {
+        partners.map((p) => (
+          <div
+            class="h-10 flex items-center opacity-60 hover:opacity-100 transition-opacity duration-200 grayscale hover:grayscale-0"
+          >
+            <img
+              src={p.logo}
+              alt={p.name}
+              class="h-full w-auto object-contain"
+              loading="lazy"
+              onerror={`this.parentElement.innerHTML='<span class="type-normal text-sm text-ink-muted font-medium">${p.name}</span>'`}
+            />
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

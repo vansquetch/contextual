@@ -1,0 +1,39 @@
+---
+interface Props {
+  areas: { title: string; items: string[] };
+}
+
+const { areas } = Astro.props;
+---
+
+<section id="areas" class="section-gap bg-[var(--color-secondary-100)]">
+  <div class="container-site">
+    <!-- Section header -->
+    <div class="mb-14">
+      <h2 class="type-t4 text-[var(--color-ink)]">{areas.title}</h2>
+      <div
+        class="mt-4 w-12 h-0.5 bg-[var(--color-accent-500)]"
+        aria-hidden="true"
+      ></div>
+    </div>
+
+    <!-- Two-column list -->
+    <ul
+      class="grid grid-cols-1 md:grid-cols-2 gap-0 list-none border-t border-[var(--color-secondary-400)]"
+      role="list"
+    >
+      {
+        areas.items.map((area) => (
+          <li class="flex items-start gap-4 py-5 border-b border-[var(--color-secondary-400)] pr-8">
+            <!-- Dot -->
+            <span
+              class="mt-2.5 flex-shrink-0 w-1.5 h-1.5 rounded-full bg-[var(--color-accent-500)]"
+              aria-hidden="true"
+            />
+            <span class="type-normal text-[var(--color-ink)]">{area}</span>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>
