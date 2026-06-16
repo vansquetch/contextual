@@ -61,7 +61,7 @@ const otherLangLabel = lang === "es" ? "EN" : "ES";
       <div class="flex items-center gap-3">
         <a
           href="#contact"
-          class="hidden md:inline-flex items-center px-5 py-2.5 rounded bg-primary-500 text-white text-sm no-underline hover:bg-primary-400 transition-colors duration-200"
+          class="hidden md:inline-flex items-center px-2 py-2.5 rounded-md bg-primary-500 text-white text-sm no-underline hover:bg-primary-400 transition-colors duration-200"
         >
           {nav.cta}
         </a>
@@ -99,7 +99,7 @@ const otherLangLabel = lang === "es" ? "EN" : "ES";
   <!-- Mobile menu -->
   <div
     id="mobile-menu"
-    class="lg:hidden hidden bg-[var(--color-surface)] border-t border-[var(--color-secondary-400)]"
+    class="lg:hidden hidden bg-surface border-t border-secondary-400"
   >
     <div class="container-site py-6">
       <ul class="flex flex-col gap-4 list-none">
@@ -115,7 +115,7 @@ const otherLangLabel = lang === "es" ? "EN" : "ES";
             <li>
               <a
                 href={href}
-                class="type-normal text-[var(--color-ink)] no-underline mobile-nav-link"
+                class="type-normal text-ink no-underline mobile-nav-link"
               >
                 {label}
               </a>
@@ -125,7 +125,7 @@ const otherLangLabel = lang === "es" ? "EN" : "ES";
       </ul>
       <a
         href="#contact"
-        class="mt-6 inline-flex items-center px-5 py-2.5 rounded-[var(--radius-pill)] bg-[var(--color-primary-500)] text-white type-normal text-sm no-underline mobile-nav-link"
+        class="mt-6 inline-flex items-center px-5 py-2.5 rounded-(--radius-pill) bg-primary-500 text-white type-normal text-sm no-underline mobile-nav-link"
       >
         {nav.cta}
       </a>

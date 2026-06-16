@@ -1,4 +1,6 @@
 ---
+import PrincipalTitle from './ui/PrincipalTitle.astro';
+
 interface ServiceItem {
   id: string;
   title: string;
@@ -19,15 +21,12 @@ const icons: Record<string, string> = {
 };
 ---
 
-<section id="what" class="section-gap bg-[var(--color-secondary-100)]">
+<section id="what" class="section-gap bg-secondary-100">
   <div class="container-site">
     <!-- Section header -->
-    <div class="mb-14">
-      <h2 class="type-t4 text-[var(--color-ink)]">{what.title}</h2>
-      <div
-        class="mt-4 w-12 h-0.5 bg-[var(--color-accent-500)]"
-        aria-hidden="true"
-      ></div>
+    <div class="mb-14 text-center">
+      <PrincipalTitle>{what.title}</PrincipalTitle>
+    
     </div>
 
     <!-- Grid -->
@@ -35,11 +34,11 @@ const icons: Record<string, string> = {
       {
         what.items.map((item) => (
           <article
-            class="group p-8 rounded-[var(--radius-md)] bg-[var(--color-surface)] border border-[var(--color-secondary-400)] hover:border-[var(--color-primary-300)] transition-colors duration-300"
+            class="group p-8 rounded-md bg-surface border border-secondary-400 hover:border-primary-300 transition-colors duration-300"
           >
             <!-- Icon -->
             <div
-              class="mb-5 w-10 h-10 flex items-center justify-center rounded-[var(--radius-sm)] bg-[var(--color-primary-100)] text-[var(--color-primary-500)] group-hover:bg-[var(--color-primary-500)] group-hover:text-white transition-colors duration-300"
+              class="mb-5 w-10 h-10 flex items-center justify-center rounded-sm bg-primary-100 text-primary-500 group-hover:bg-[var(--color-primary-500)] group-hover:text-white transition-colors duration-300"
             >
               <svg
                 width="20"
@@ -51,10 +50,10 @@ const icons: Record<string, string> = {
               />
             </div>
 
-            <h3 class="type-medium text-[var(--color-ink)] mb-3">
+            <h3 class="type-medium text-ink mb-3">
               {item.title}
             </h3>
-            <p class="type-normal text-[var(--color-ink-muted)]">{item.body}</p>
+            <p class="type-normal text-ink-muted">{item.body}</p>
           </article>
         ))
       }

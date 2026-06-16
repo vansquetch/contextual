@@ -1,5 +1,6 @@
 ---
 import type { HeroContent } from "../i18n/getContent";
+import PrincipalTitle from "./ui/PrincipalTitle.astro";
 
 interface Props {
   hero: HeroContent;
@@ -8,41 +9,15 @@ interface Props {
 const { hero } = Astro.props;
 ---
 
-<section
-  id="hero"
-  class="relative min-h-[88vh] flex items-center overflow-hidden bg-surface"
->
-  <!-- Accent line — signature element: a vertical rule in primary-500
-       that bleeds from the headline into the background -->
-  <div
-    class="absolute left-0 top-0 bottom-0 w-1 bg-accent-500 hidden lg:block"
-    aria-hidden="true"
-  >
-  </div>
-
+<section id="hero" class="relative min-h-[88vh] overflow-hidden pb-10">
   <!-- Background city image (right half) -->
-  <div
-    class="absolute right-0 top-0 bottom-0 w-full lg:w-1/2 opacity-20 lg:opacity-100"
-    aria-hidden="true"
-  >
-    <div
-      class="w-full h-full bg-secondary-300"
-      style="
-        background-image: url('/images/hero-city.webp');
-        background-size: cover;
-        background-position: center;
-        background-blend-mode: multiply;
-      "
-    >
-    </div>
-  </div>
 
-  <div class="container-site relative z-10 section-gap">
+  <div class="relative z-10 container-site flex items-center">
     <div class="max-w-2xl">
       <!-- Headline -->
-      <h1 class="type-t1 text-ink mb-8 max-w-xl">
+      <PrincipalTitle>
         {hero.headline}
-      </h1>
+      </PrincipalTitle>
 
       <!-- Body copy -->
       <div class="flex flex-col gap-4 mb-10 max-w-lg">
@@ -72,6 +47,9 @@ const { hero } = Astro.props;
             stroke-linejoin="round"></path>
         </svg>
       </a>
+    </div>
+    <div class="pl-5 hidden md:block">
+      <img src="/images/hero-city.webp" class="max-w-xl object-cover" />
     </div>
   </div>
 </section>

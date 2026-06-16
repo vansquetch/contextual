@@ -1,4 +1,6 @@
 ---
+import PrincipalTitle from './ui/PrincipalTitle.astro';
+
 interface TeamMember {
   id: string;
   name: string;
@@ -20,25 +22,22 @@ const photoPath = (id: string) => `/images/team-${id}.webp`;
 <section id="team" class="section-gap bg-surface">
   <div class="container-site">
     <!-- Section header -->
-    <div class="mb-14">
-      <h2 class="type-t4 text-ink">{team.title}</h2>
-      <div
-        class="mt-4 w-12 h-0.5 bg-accent-500"
-        aria-hidden="true"
-      ></div>
+    <div class="mb-14 text-center">
+      <PrincipalTitle>{team.title}</PrincipalTitle>
+      
     </div>
 
     <!-- Co-founders: large horizontal cards -->
     <div class="flex flex-col gap-6 mb-6">
       {
         team.members.slice(0, 2).map((member) => (
-          <article class="flex flex-col md:flex-row gap-8 p-8 rounded-md bg-secondary-100 border border-[var(--color-secondary-400)]">
+          <article class="flex flex-col md:flex-row gap-8 p-8 rounded-md bg-secondary-100 border border-secondary-400">
             <!-- Photo -->
-            <div class="flex-shrink-0 w-full md:w-48 h-56 md:h-auto rounded-sm overflow-hidden bg-[var(--color-secondary-300)]">
+            <div class="shrink-0 w-full md:w-56 h-auto">
               <img
                 src={photoPath(member.id)}
                 alt={member.name}
-                class="w-full h-full object-cover"
+                class="w-full h-full object-contain"
                 loading="lazy"
                 onerror="this.style.display='none'"
               />
@@ -46,12 +45,13 @@ const photoPath = (id: string) => `/images/team-${id}.webp`;
 
             <!-- Copy -->
             <div class="flex flex-col justify-center">
-              <p class="type-normal text-xs text-accent-500 font-semibold uppercase tracking-widest mb-2">
-                {member.role}
-              </p>
-              <h3 class="type-medium text-ink mb-4">
+              <h3 class="type-t1 text-ink mb-4">
                 {member.name}
               </h3>
+              <p class="text-xs text-ink-muted font-semibold uppercase tracking-widest mb-2">
+                {member.role}
+              </p>
+              
               <p class="type-normal text-ink-muted max-w-prose">
                 {member.bio}
               </p>
@@ -62,31 +62,24 @@ const photoPath = (id: string) => `/images/team-${id}.webp`;
     </div>
 
     <!-- Specialists: smaller cards, 2-col grid -->
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-black">
       {
         team.members.slice(2).map((member) => (
-          <article class="flex flex-col gap-6 p-8 rounded-[var(--radius-md)] bg-[var(--color-secondary-100)] border border-[var(--color-secondary-400)]">
+          <article class="flex flex-col gap-4 p-4 rounded-md  ">
             <!-- Photo + name row -->
-            <div class="flex gap-4 items-start">
-              <div class="flex-shrink-0 w-16 h-16 rounded-full overflow-hidden bg-[var(--color-secondary-300)]">
-                <img
-                  src={photoPath(member.id)}
-                  alt={member.name}
-                  class="w-full h-full object-cover"
-                  loading="lazy"
-                  onerror="this.style.display='none'"
-                />
-              </div>
+
+
+              
               <div>
-                <p class="type-normal text-xs text-accent-500 font-semibold uppercase tracking-widest mb-1">
-                  {member.role}
-                </p>
-                <h3 class="type-medium text-ink">
+               
+                <h3 class="type-medium  text-center">
                   {member.name}
                 </h3>
-              </div>
-            </div>
-            <p class="type-normal text-ink-muted">{member.bio}</p>
+                <p class="text-xs font-semibold uppercase tracking-widest mb-1 text-center">
+                  {member.role}
+                </p>
+              </div>            
+            <p class="text-md ">{member.bio}</p>
           </article>
         ))
       }

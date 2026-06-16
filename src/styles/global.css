@@ -61,22 +61,22 @@
   --text-t1-size: 3rem; /* 64px */
   --text-t1-line: 1.2;
   --text-t1-tracking: -0.03em;
-  --text-t1-weight: 600; /* Font Weight style in Figma */
+  --text-t1-weight: 300; /* Font Weight style in Figma */
 
   --text-t4-size: 2.5rem; /* 40px */
   --text-t4-line: 1.2;
   --text-t4-tracking: -0.03em;
-  --text-t4-weight: 300;
+  --text-t4-weight: 200;
 
   --text-medium-size: 1.5rem; /* 24px */
   --text-medium-line: 1.16;
   --text-medium-tracking: 0.03em;
-  --text-medium-weight: 300;
+  --text-medium-weight: 100;
 
   --text-normal-size: 1.25rem; /* 20px */
   --text-normal-line: 1.36;
   --text-normal-tracking: 0.03em;
-  --text-normal-weight: 300;
+  --text-normal-weight: 100;
 
   /* --- Spacing scale --- */
   --space-section: 7rem; /* between major sections */
@@ -225,4 +225,41 @@ body {
     animation-duration: 0.01ms !important;
     transition-duration: 0.01ms !important;
   }
+}
+.raya-derecha {
+  position: relative;
+}
+
+.raya-derecha::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("/images/raya-contextual.webp");
+  background-repeat: no-repeat;
+  background-position-y: center;
+  background-position-x: center;
+  background-attachment: fixed;
+  opacity: 20%;
+}
+
+.raya-izquierda {
+  position: relative;
+}
+
+.raya-izquierda::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("/images/raya-contextual.webp");
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-position-y: center;
+  background-position-x: -150px;
+  opacity: 20%;
 }

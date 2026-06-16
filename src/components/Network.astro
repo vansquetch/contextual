@@ -1,4 +1,6 @@
 ---
+import PrincipalTitle from "./ui/PrincipalTitle.astro";
+
 interface Props {
   network: { title: string; body: string; label: string };
 }
@@ -7,38 +9,40 @@ const { network } = Astro.props;
 
 // Partner logos — replace src with actual logo files in /public/logos/
 const partners = [
-  { id: "nyu", name: "NYU — Center on International Cooperation", logo: "/logos/nyu-cic.svg" },
-  { id: "peace", name: "Peace in Our Cities", logo: "/logos/peace-cities.svg" },
-  { id: "worldjustice", name: "World Justice Project", logo: "/logos/world-justice.svg" },
+  {
+    id: "nyu",
+    name: "NYU — Center on International Cooperation",
+    logo: "/logos/nyu.png",
+  },
+  { id: "peace", name: "Peace in Our Cities", logo: "/logos/peace.png" },
+  {
+    id: "worldjustice",
+    name: "World Justice Project",
+    logo: "png",
+  },
 ];
 ---
 
-<section id="network" class="section-gap bg-[var(--color-secondary-200)]">
+<section id="network" class="section-gap bg-secondary-200">
   <div class="container-site">
     <!-- Section header -->
-    <div class="mb-10">
-      <h2 class="type-t4 text-[var(--color-ink)]">{network.title}</h2>
-      <div
-        class="mt-4 w-12 h-0.5 bg-[var(--color-accent-500)]"
-        aria-hidden="true"
-      ></div>
+    <div class="mb-10 text-center">
+      <PrincipalTitle>{network.title}</PrincipalTitle>
     </div>
 
-    <p class="type-normal text-[var(--color-ink-muted)] max-w-2xl mb-12">
+    <p class="type-normal text-ink-muted mb-12 text-center">
       {network.body}
     </p>
 
-    <p class="type-normal text-xs text-[var(--color-ink-muted)] uppercase tracking-widest font-semibold mb-8">
+    <p class="text-ink-muted text-center tracking-widest font-semibold mb-8">
       {network.label}
     </p>
 
     <!-- Logo strip -->
-    <div class="flex flex-wrap items-center gap-12">
+    <div class="flex flex-wrap items-center justify-center gap-12">
       {
         partners.map((p) => (
-          <div
-            class="h-10 flex items-center opacity-60 hover:opacity-100 transition-opacity duration-200 grayscale hover:grayscale-0"
-          >
+          <div class="h-14 flex items-center opacity-60 hover:opacity-100 transition-opacity duration-200 grayscale hover:grayscale-0">
             <img
               src={p.logo}
               alt={p.name}
