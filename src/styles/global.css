@@ -25,6 +25,13 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: "Work Sans";
+  src: url("/fonts/WorkSans-Medium.ttf") format("truetype");
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
 /* -------------------------------------------------------------
    CSS Custom Properties — single source of truth.
    Tailwind 4 @theme reads these via --color-* / --font-* etc.
@@ -56,30 +63,31 @@
 
   /* --- Typography --- */
   --font-sans: "Söhne", "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-work: "Work Sans", Arial;
 
   /* Type scale (from Figma) */
   --text-t1-size: 3rem; /* 64px */
   --text-t1-line: 1.2;
   --text-t1-tracking: -0.03em;
-  --text-t1-weight: 300; /* Font Weight style in Figma */
+  --text-t1-weight: 400; /* Font Weight style in Figma */
 
-  --text-t4-size: 2.5rem; /* 40px */
-  --text-t4-line: 1.2;
+  --text-t4-size: 2.3rem; /* 40px */
+  --text-t4-line: 1;
   --text-t4-tracking: -0.03em;
   --text-t4-weight: 200;
 
   --text-medium-size: 1.5rem; /* 24px */
   --text-medium-line: 1.16;
   --text-medium-tracking: 0.03em;
-  --text-medium-weight: 100;
+  --text-medium-weight: 400;
 
   --text-normal-size: 1.25rem; /* 20px */
   --text-normal-line: 1.36;
   --text-normal-tracking: 0.03em;
-  --text-normal-weight: 100;
+  --text-normal-weight: 300;
 
   /* --- Spacing scale --- */
-  --space-section: 7rem; /* between major sections */
+  --space-section: 8rem; /* between major sections */
   --space-section-md: 5rem;
   --space-component: 3rem;
   --space-gap: 1.5rem;
@@ -118,6 +126,7 @@
   --color-surface: var(--color-surface);
 
   --font-sans: var(--font-sans);
+  --font-work: var(--font-work);
 }
 
 /* -------------------------------------------------------------
@@ -239,8 +248,8 @@ body {
   height: 100%;
   background-image: url("/images/raya-contextual.webp");
   background-repeat: no-repeat;
-  background-position-y: center;
-  background-position-x: center;
+  background-position-y: top;
+  background-position-x: 110%;
   background-attachment: fixed;
   opacity: 20%;
 }

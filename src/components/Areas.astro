@@ -18,12 +18,12 @@ const { areas } = Astro.props;
 
     <!-- Two-column list -->
     <ul
-      class="grid grid-cols-1 md:grid-cols-2 gap-x-10 list-none border-t border-secondary-400"
+      class="grid grid-cols-1 md:grid-cols-2 gap-x-10 list-none"
       role="list"
     >
       {
         areas.items.map((area) => (
-          <li class="flex items-start gap-4 py-5 border-b border-secondary-400 pr-8">
+          <li class="flex items-start gap-4 py-5 border-b-2 border-secondary-500 pr-8">
             <!-- Dot -->
             <span
               class="mt-2.5 shrink-0 w-1.5 h-1.5 rounded-full"

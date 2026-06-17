@@ -17,7 +17,9 @@ const otherLangLabel = lang === "es" ? "EN" : "ES";
   style="background: transparent;"
 >
   <div class="container-site">
-    <nav class="flex items-center justify-between gap-8 h-16 md:h-20 text-md">
+    <nav
+      class="flex items-center justify-between gap-4 h-16 md:h-20 text-md font-work"
+    >
       <!-- Logo -->
       <a
         href={`/${lang === "es" ? "" : "en"}`}
@@ -34,7 +36,7 @@ const otherLangLabel = lang === "es" ? "EN" : "ES";
 
       <!-- Desktop nav -->
       <ul
-        class="hidden lg:flex items-center gap-8 list-none text-sm text-center"
+        class="hidden lg:flex items-center gap-4 list-none text-sm text-center"
       >
         {
           [

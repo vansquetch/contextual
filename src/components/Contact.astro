@@ -1,4 +1,10 @@
 ---
+import PrincipalTitle from "./ui/PrincipalTitle.astro";
+import XIcon from "./ui/icons/XIcon.astro";
+import InstagramIcon from "./ui/icons/InstagramIcon.astro";
+import YoutubeIcon from "./ui/icons/YoutubeIcon.astro";
+import LinkedinIcon from "./ui/icons/LinkedinIcon.astro";
+
 interface ContactContent {
   title: string;
   subtitle: string;
@@ -13,44 +19,17 @@ interface Props {
 const { contact } = Astro.props;
 ---
 
-<section id="contact" class="section-gap bg-[var(--color-surface)]">
-  <div class="container-site">
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
-      <!-- Left: heading + address -->
-      <div>
-        <h2 class="type-t4 text-[var(--color-ink)] mb-4">{contact.title}</h2>
-        <div
-          class="mt-0 mb-8 w-12 h-0.5 bg-[var(--color-accent-500)]"
-          aria-hidden="true"
-        ></div>
-        <p class="type-normal text-[var(--color-ink-muted)] mb-8">
-          {contact.subtitle}
-        </p>
-
-        <!-- Address block -->
-        <address
-          class="not-italic flex flex-col gap-2 type-normal text-[var(--color-ink-muted)]"
-        >
-          <span>Washington, DC</span>
-          <a
-            href="mailto:hello@itscontextual.com"
-            class="text-[var(--color-primary-500)] hover:text-[var(--color-primary-400)] no-underline transition-colors duration-200"
-          >
-            hello@itscontextual.com
-          </a>
-          <a
-            href="https://itscontextual.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="text-[var(--color-ink-muted)] hover:text-[var(--color-ink)] no-underline transition-colors duration-200"
-          >
-            itscontextual.com
-          </a>
-        </address>
-      </div>
-
+<section id="contact" class="section-gap pb-0! bg-secondary-500">
+  <div class="max-w-3xl m-auto">
+    <div class="text-center">
+      <PrincipalTitle>{contact.title}</PrincipalTitle>
+      <p class="type-normal text-ink-muted mb-8">
+        {contact.subtitle}
+      </p>
+    </div>
+    <div class="flex flex-col-reverse p-5 sm:flex-row gap-16 items-start">
       <!-- Right: form -->
-      <div>
+      <div class="bg-white p-5 radius-md grow max-w-xl w-full m-auto">
         <form
           class="flex flex-col gap-5"
           name="contact"
@@ -59,12 +38,9 @@ const { contact } = Astro.props;
           novalidate
         >
           <!-- Name row -->
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div class="flex flex-col gap-2">
-              <label
-                for="name"
-                class="type-normal text-sm font-medium text-[var(--color-ink)]"
-              >
+              <label for="name" class="text-sm font-medium text-ink">
                 {contact.fields.name}
               </label>
               <input
@@ -73,14 +49,11 @@ const { contact } = Astro.props;
                 type="text"
                 required
                 autocomplete="given-name"
-                class="px-4 py-3 rounded-[var(--radius-sm)] border border-[var(--color-secondary-400)] bg-[var(--color-secondary-100)] type-normal text-[var(--color-ink)] placeholder:text-[var(--color-ink-muted)] focus:border-[var(--color-primary-500)] focus:bg-white focus:outline-none transition-colors duration-200"
+                class="px-2 py-2 rounded-sm border border-secondary-400 bg-secondary-100 text-ink placeholder:text-ink-muted focus:border-primary-500 focus:bg-white focus:outline-none transition-colors duration-200 text-md"
               />
             </div>
             <div class="flex flex-col gap-2">
-              <label
-                for="surname"
-                class="type-normal text-sm font-medium text-[var(--color-ink)]"
-              >
+              <label for="surname" class="text-sm font-medium text-ink">
                 {contact.fields.surname}
               </label>
               <input
@@ -89,17 +62,14 @@ const { contact } = Astro.props;
                 type="text"
                 required
                 autocomplete="family-name"
-                class="px-4 py-3 rounded-[var(--radius-sm)] border border-[var(--color-secondary-400)] bg-[var(--color-secondary-100)] type-normal text-[var(--color-ink)] placeholder:text-[var(--color-ink-muted)] focus:border-[var(--color-primary-500)] focus:bg-white focus:outline-none transition-colors duration-200"
+                class="px-2 py-2 rounded-sm border border-secondary-400 bg-secondary-100 text-ink placeholder:text-ink-muted focus:border-primary-500 focus:bg-white focus:outline-none transition-colors duration-200 text-md"
               />
             </div>
           </div>
 
           <!-- Email -->
           <div class="flex flex-col gap-2">
-            <label
-              for="email"
-              class="type-normal text-sm font-medium text-[var(--color-ink)]"
-            >
+            <label for="email" class="text-sm font-medium text-ink">
               {contact.fields.email}
             </label>
             <input
@@ -108,16 +78,13 @@ const { contact } = Astro.props;
               type="email"
               required
               autocomplete="email"
-              class="px-4 py-3 rounded-[var(--radius-sm)] border border-[var(--color-secondary-400)] bg-[var(--color-secondary-100)] type-normal text-[var(--color-ink)] placeholder:text-[var(--color-ink-muted)] focus:border-[var(--color-primary-500)] focus:bg-white focus:outline-none transition-colors duration-200"
+              class="px-2 py-2 rounded-sm border border-secondary-400 bg-secondary-100 text-ink placeholder:text-ink-muted focus:border-primary-500 focus:bg-white focus:outline-none transition-colors duration-200 text-md"
             />
           </div>
 
           <!-- Message -->
           <div class="flex flex-col gap-2">
-            <label
-              for="message"
-              class="type-normal text-sm font-medium text-[var(--color-ink)]"
-            >
+            <label for="message" class="text-sm font-medium text-ink">
               {contact.fields.message}
             </label>
             <textarea
@@ -125,7 +92,7 @@ const { contact } = Astro.props;
               name="message"
               required
               rows="5"
-              class="px-4 py-3 rounded-[var(--radius-sm)] border border-[var(--color-secondary-400)] bg-[var(--color-secondary-100)] type-normal text-[var(--color-ink)] placeholder:text-[var(--color-ink-muted)] focus:border-[var(--color-primary-500)] focus:bg-white focus:outline-none transition-colors duration-200 resize-y"
+              class="px-2 py-2 rounded-sm border border-secondary-400 bg-secondary-100 text-ink placeholder:text-ink-muted focus:border-primary-500 focus:bg-white focus:outline-none transition-colors duration-200 text-md resize-y"
             ></textarea>
           </div>
 
@@ -133,7 +100,7 @@ const { contact } = Astro.props;
           <div>
             <button
               type="submit"
-              class="inline-flex items-center gap-2 px-8 py-3.5 rounded-[var(--radius-pill)] bg-[var(--color-primary-500)] text-white type-normal no-underline hover:bg-[var(--color-primary-400)] active:bg-[var(--color-primary-500)] transition-colors duration-200 cursor-pointer border-none font-inherit"
+              class="inline-flex items-center gap-2 px-8 py-4 rounded-md bg-primary-500 text-white font-work text-sm no-underline hover:bg-primary-400 active:bg-primary-500 transition-colors duration-200 cursor-pointer border-none font-inherit"
             >
               {contact.cta}
               <svg
@@ -148,13 +115,46 @@ const { contact } = Astro.props;
                   stroke="currentColor"
                   stroke-width="1.5"
                   stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
+                  stroke-linejoin="round"></path>
               </svg>
             </button>
           </div>
         </form>
       </div>
+      <!-- Left: heading + address -->
+      <div class="text-center sm:text-left w-full sm:w-auto">
+        <!-- Address block -->
+        <div
+          class="flex justify-center sm:justify-start items-center gap-2 pb-5"
+        >
+          <XIcon />
+          <InstagramIcon />
+          <YoutubeIcon />
+          <LinkedinIcon />
+        </div>
+        <address class="not-italic text-ink-muted text-sm">
+          <span>Contextual<br />Washington, DC</span>
+          <br /><br />
+          <a
+            href="mailto:hello@itscontextual.com"
+            class="text-primary-500 hover:text-primary-400 underline transition-colors duration-200"
+          >
+            hello@itscontextual.com
+          </a>
+          <br />
+          <a
+            href="https://itscontextual.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-ink-muted hover:text-ink no-underline transition-colors duration-200"
+          >
+            itscontextual.com
+          </a>
+        </address>
+      </div>
+    </div>
+    <div class="flex items-center justify-center gap-2 text-ink no-underline">
+      <img src="/images/logo.webp" class="w-60 my-5" />
     </div>
   </div>
 </section>

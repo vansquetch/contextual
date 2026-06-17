@@ -26,17 +26,17 @@ const { solutions } = Astro.props;
       {
         solutions.items.map((item, i) => (
           <div
-            class="group flex gap-8 py-10 border-b border-secondary-400 first:border-t first:border-secondary-400"
+            class="group flex gap-8 py-10 border-b border-primary-300"
           >
             <!-- Index marker -->
-            <div
+            {/* <div
               class="flex flex-col items-center pt-1"
               aria-hidden="true"
             >
               <span class="type-normal text-xs text-accent-500 font-semibold tabular-nums w-8 text-right">
                 0{i + 1}
               </span>
-            </div>
+            </div> */}
 
             <!-- Content -->
             <div class="flex-1">
