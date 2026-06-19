@@ -22,11 +22,11 @@ const { solutions } = Astro.props;
     </div>
 
     <!-- Solutions list — stacked with a vertical left border accent -->
-    <div class="flex flex-col gap-0 max-w-xl m-auto">
+    <div class="flex flex-col gap-6 max-w-xl m-auto">
       {
         solutions.items.map((item, i) => (
           <div
-            class="group flex gap-8 py-10 border-b border-primary-300"
+            class="group flex gap-2 py-3  border-b border-primary-300"
           >
             <!-- Index marker -->
             {/* <div
@@ -40,10 +40,10 @@ const { solutions } = Astro.props;
 
             <!-- Content -->
             <div class="flex-1">
-              <h3 class="type-medium text-ink mb-3 group-hover:text-primary-500 transition-colors duration-200">
+              <h3 class="type-medium text-ink mb-3 group-hover:text-primary-500 transition-colors duration-200 font-work">
                 {item.title}
               </h3>
-              <p class="type-normal text-ink-muted max-w-2xl">
+              <p class="type-normal max-w-2xl">
                 {item.body}
               </p>
             </div>

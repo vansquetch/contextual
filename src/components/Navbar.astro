@@ -1,5 +1,6 @@
 ---
 import type { NavContent } from "../i18n/getContent";
+import ArrowUp from "./ui/icons/ArrowUp.astro";
 
 interface Props {
   nav: NavContent;
@@ -144,59 +145,78 @@ const otherLangLabel = lang === "es" ? "EN" : "ES";
   <img src="/images/logo.webp" class="w-80 my-11" />
 </div>
 
-<script>
-  // Scroll: add background to navbar
-  const header = document.getElementById("site-header");
-  const logo = document.getElementById("logo-contextual");
-  window.addEventListener("scroll", () => {
-    const opacityVal = window.scrollY / 500;
-    if (logo) logo.style.opacity = (opacityVal > 1 ? 1 : opacityVal) + "";
-    if (window.scrollY > 20) {
-      logo?.classList.replace("hidden", "flex");
-      header?.setAttribute(
-        "style",
-        "background: rgba(255,255,255,0.95); backdrop-filter: blur(8px); box-shadow: 0 1px 0 var(--color-secondary-400);",
-      );
-    } else {
-      logo?.classList.replace("flex", "hidden");
-      header?.setAttribute("style", "background: transparent;");
-    }
-  });
+<a
+  id="upButton"
+  href="#"
+  class="transition-all duration-500 ease-out opacity-0 invisible scale-95 transform bg-primary-500 text-white text-4xl font-bold fixed bottom-4 right-4 rounded-full p-2 z-50"
+>
+  <ArrowUp />
+  <a>
+    <script>
+      // Scroll: add background to navbar
+      const header = document.getElementById("site-header");
+      const logo = document.getElementById("logo-contextual");
+      const upButton = document.getElementById("upButton");
+      window.addEventListener("scroll", () => {
+        const opacityVal = window.scrollY / 500;
+        if (logo) logo.style.opacity = (opacityVal > 1 ? 1 : opacityVal) + "";
+        if (window.scrollY > 1000) {
+          upButton?.classList.replace("opacity-0", "opacity-100");
+          upButton?.classList.replace("scale-95", "scale-100");
+          upButton?.classList.replace("invisible", "visible");
+        } else {
+          upButton?.classList.replace("opacity-100", "opacity-0");
+          upButton?.classList.replace("scale-100", "scale-95");
+          upButton?.classList.replace("visible", "invisible");
+        }
+        if (window.scrollY > 20) {
+          logo?.classList.replace("hidden", "flex");
+          header?.setAttribute(
+            "style",
+            "background: rgba(255,255,255,0.95); backdrop-filter: blur(8px); box-shadow: 0 1px 0 var(--color-secondary-400);",
+          );
+        } else {
+          logo?.classList.replace("flex", "hidden");
+          header?.setAttribute("style", "background: transparent;");
+        }
+      });
 
-  // Mobile menu toggle
-  const toggle = document.getElementById("menu-toggle");
-  const menu = document.getElementById("mobile-menu");
-  const bar1 = document.getElementById("bar1");
-  const bar2 = document.getElementById("bar2");
-  const bar3 = document.getElementById("bar3");
+      // Mobile menu toggle
+      const toggle = document.getElementById("menu-toggle");
+      const menu = document.getElementById("mobile-menu");
+      const bar1 = document.getElementById("bar1");
+      const bar2 = document.getElementById("bar2");
+      const bar3 = document.getElementById("bar3");
 
-  toggle?.addEventListener("click", () => {
-    const isOpen = menu?.classList.toggle("hidden") === false;
-    toggle.setAttribute(
-      "aria-expanded",
-      String(!menu?.classList.contains("hidden")),
-    );
-    if (!menu?.classList.contains("hidden")) {
-      bar1!.style.transform = "translateY(6px) rotate(45deg)";
-      bar2!.style.opacity = "0";
-      bar3!.style.transform = "translateY(-6px) rotate(-45deg)";
-      bar3!.style.width = "20px";
-    } else {
-      bar1!.style.transform = "";
-      bar2!.style.opacity = "";
-      bar3!.style.transform = "";
-      bar3!.style.width = "";
-    }
-  });
+      toggle?.addEventListener("click", () => {
+        const isOpen = menu?.classList.toggle("hidden") === false;
+        toggle.setAttribute(
+          "aria-expanded",
+          String(!menu?.classList.contains("hidden")),
+        );
+        if (!menu?.classList.contains("hidden")) {
+          bar1!.style.transform = "translateY(6px) rotate(45deg)";
+          bar2!.style.opacity = "0";
+          bar3!.style.transform = "translateY(-6px) rotate(-45deg)";
+          bar3!.style.width = "20px";
+        } else {
+          bar1!.style.transform = "";
+          bar2!.style.opacity = "";
+          bar3!.style.transform = "";
+          bar3!.style.width = "";
+        }
+      });
 
-  // Close mobile menu on link click
-  document.querySelectorAll(".mobile-nav-link").forEach((link) => {
-    link.addEventListener("click", () => {
-      menu?.classList.add("hidden");
-      bar1!.style.transform = "";
-      bar2!.style.opacity = "";
-      bar3!.style.transform = "";
-      bar3!.style.width = "";
-    });
-  });
-</script>
+      // Close mobile menu on link click
+      document.querySelectorAll(".mobile-nav-link").forEach((link) => {
+        link.addEventListener("click", () => {
+          menu?.classList.add("hidden");
+          bar1!.style.transform = "";
+          bar2!.style.opacity = "";
+          bar3!.style.transform = "";
+          bar3!.style.width = "";
+        });
+      });
+    </script>
+  </a></a
+>
