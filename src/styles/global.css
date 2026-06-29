@@ -272,3 +272,37 @@ body {
   background-position-x: -150px;
   opacity: 20%;
 }
+
+.input-admin {
+  @apply w-full
+    rounded-md
+    border
+    border-secondary-400
+    bg-white
+    px-4
+    py-3
+    text-base
+    outline-none
+    focus:border-primary-500;
+}
+
+.card-admin {
+  @apply rounded-xl
+    border
+    border-secondary-300
+    bg-white
+    p-6;
+}
+
+.button-admin {
+  @apply rounded-full
+    bg-primary-500
+    px-5
+    py-3
+    text-white
+    transition;
+}
+
+.button-admin:hover {
+  @apply bg-primary-400;
+}

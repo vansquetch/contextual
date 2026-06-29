@@ -1,5 +1,3 @@
-import { supabase } from "../lib/supabase";
-
 export type Lang = "es" | "en";
 
 export type NavContent = {
@@ -65,18 +63,3 @@ export type SiteContent = {
     site: string;
   };
 };
-
-export async function getContent(lang: Lang): Promise<SiteContent> {
-  const { data, error } = await supabase
-    .from("site_content")
-    .select("content")
-    .eq("lang", lang)
-    .single();
-
-  if (error) {
-    console.error(error);
-    throw new Error(`No se pudo cargar el contenido (${lang})`);
-  }
-
-  return data.content as SiteContent;
-}

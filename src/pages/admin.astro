@@ -1,0 +1,13 @@
+---
+// src/pages/admin.astro
+
+import AdminApp from "../islands/admin/AdminApp.tsx";
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+  lang="es"
+  title="Contextual — Soluciones a problemas públicos complejos"
+>
+  <AdminApp client:load />
+</BaseLayout>
