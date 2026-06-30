@@ -1,0 +1,12 @@
+---
+interface Props {
+  html: string;
+  class?: string;
+}
+
+const { html, class: className = "" } = Astro.props;
+---
+
+<div class={`richtext ${className}`}>
+  <Fragment set:html={html} />
+</div>

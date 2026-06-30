@@ -1,35 +1,41 @@
-import { useEffect, useState } from "react";
+import type { MediaContent, SiteContent } from "../../types/content.ts";
 
 import AdminLayout from "./AdminLayout";
 import Sidebar from "./Sidebar.tsx";
-
 import JsonEditor from "./JsonEditor";
-
-import { getSession } from "../../services/auth.service.ts";
 import Login from "./Login.tsx";
+
 import { useContent } from "../../hooks/useContent.ts";
+import { useAuth } from "../../hooks/useAuth.ts";
+import MediaEditor from "./MediaEditor.tsx";
 
 export default function AdminApp() {
-  const [authenticated, setAuthenticated] = useState(false);
-  const [section, setSection] = useState("hero");
-
-  const { content, loading, saving, saved, lang, setLang, updateContent } =
-    useContent();
-
-  useEffect(() => {
-    getSession().then(({ data }) => {
-      setAuthenticated(!!data.session);
-    });
-  }, []);
-  useEffect(() => {
-    console.log(section);
-  }, [section]);
+  const {
+    content,
+    contentMedia,
+    loading,
+    saving,
+    lang,
+    setLang,
+    updateContent,
+    section,
+    setSection,
+  } = useContent();
+  const { authenticated, setAuthenticated } = useAuth();
 
   if (!authenticated) {
     return <Login onLogin={() => setAuthenticated(true)} />;
   }
   return (
     <AdminLayout
+      topBarAction={
+        <button
+          className="rounded-full border aspect-square flex justify-center items-center hover:bg-gray-100 bg-gray-200 text-gray-900 text-sm w-10 h-10"
+          onClick={() => setLang(lang == "es" ? "en" : "es")}
+        >
+          {lang == "es" ? "en" : "es"}
+        </button>
+      }
       sidebar={
         <Sidebar
           sections={Object.keys(content ?? {})}
@@ -43,18 +49,31 @@ export default function AdminApp() {
       {loading ? (
         <div className="p-20">Cargando...</div>
       ) : (
-        <JsonEditor
-          value={content?.[section]}
-          onChange={(value) => {
-            updateContent((content) => ({
-              ...content,
+        <>
+          {saving ?? (
+            <span className="text-sm text-ink-muted rounded-full bg-gray-100 p-2">
+              guardando...
+            </span>
+          )}
+          {/* {contentMedia?.[section as keyof MediaContent] ?? (
+            <MediaEditor
+              onChange={() => ""}
+              value={contentMedia?.[section as keyof MediaContent]}
+            />
+          )} */}
 
-              [section]: value,
-            }));
-          }}
-        />
+          <JsonEditor
+            value={content?.[section as keyof SiteContent]}
+            onChange={(value) => {
+              updateContent((content) => ({
+                ...content,
+
+                [section]: value,
+              }));
+            }}
+          />
+        </>
       )}
-      {saving ?? "Guardando..."}
     </AdminLayout>
   );
 }

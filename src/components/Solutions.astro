@@ -1,5 +1,6 @@
 ---
 import PrincipalTitle from './ui/PrincipalTitle.astro';
+import RichText from './ui/RichText.astro';
 
 interface SolutionItem {
   id: string;
@@ -43,9 +44,7 @@ const { solutions } = Astro.props;
               <h3 class="type-medium text-ink mb-3 group-hover:text-primary-500 transition-colors duration-200 font-work">
                 {item.title}
               </h3>
-              <p class="type-normal max-w-2xl">
-                {item.body}
-              </p>
+                <RichText class="type-normal max-w-2xl" html={item.body} />
             </div>
 
             

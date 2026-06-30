@@ -63,3 +63,16 @@ export type SiteContent = {
     site: string;
   };
 };
+
+export type MediaContent = {
+  hero: { image: string };
+  team: {
+    jairo: string;
+    enrique: string;
+  };
+  network: {
+    nyu: string;
+    peace: string;
+    world: string;
+  };
+};

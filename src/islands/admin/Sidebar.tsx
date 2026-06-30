@@ -17,8 +17,8 @@ export default function Sidebar({
   );
 
   return (
-    <aside className="flex w-72 flex-col border-r border-secondary-300 bg-white">
-      <div className="border-b border-secondary-300 p-8">
+    <aside className="flex flex-col border-r border-secondary-300 bg-white">
+      <div className="border-b border-secondary-300 p-8 hidden sm:block">
         <h1 className="type-medium">Contextual CMS</h1>
 
         <p className="mt-2 text-sm text-ink-muted">
@@ -35,7 +35,7 @@ export default function Sidebar({
               key={section.key}
               onClick={() => onSelect(section.key)}
               className={`
-                mb-1 flex w-full items-center gap-3 rounded-lg px-4 py-3 text-left transition-all
+                mb-1 flex w-full items-center justify-center sm:justify-start gap-3 rounded-lg px-2 py-2 text-left transition-all
                 ${
                   active
                     ? "bg-primary-500 text-white"
@@ -45,7 +45,7 @@ export default function Sidebar({
             >
               <span>{section.icon}</span>
 
-              <span>{section.label}</span>
+              <span className="hidden sm:block">{section.label}</span>
             </button>
           );
         })}

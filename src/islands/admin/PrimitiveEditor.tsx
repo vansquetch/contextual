@@ -1,18 +1,12 @@
+import RichTextEditor from "./RichTextEditor";
+
 interface Props {
   label?: string;
-
   value: any;
-
   onChange(value: any): void;
 }
 
-export default function PrimitiveEditor({
-  label,
-
-  value,
-
-  onChange,
-}: Props) {
+export default function PrimitiveEditor({ label, value, onChange }: Props) {
   if (typeof value === "boolean") {
     return (
       <label className="flex items-center gap-3">
@@ -34,11 +28,15 @@ export default function PrimitiveEditor({
       {label && <label className="font-medium">{label}</label>}
 
       {multiline ? (
-        <textarea
-          rows={6}
-          className="input-admin"
+        // <textarea
+        //   rows={6}
+        //   className="input-admin"
+        //   value={value}
+        //   onChange={(e) => onChange(e.target.value)}
+        // />
+        <RichTextEditor
           value={value}
-          onChange={(e) => onChange(e.target.value)}
+          onChange={(richHTML) => onChange(richHTML)}
         />
       ) : (
         <input

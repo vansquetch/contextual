@@ -1,5 +1,6 @@
 ---
 import PrincipalTitle from "./ui/PrincipalTitle.astro";
+import RichText from "./ui/RichText.astro";
 
 interface Props {
   network: { title: string; body: string; label: string };
@@ -30,9 +31,10 @@ const partners = [
       <PrincipalTitle>{network.title}</PrincipalTitle>
     </div>
 
-    <p class="type-normal text-ink-muted mb-12 text-center">
-      {network.body}
-    </p>
+    <RichText
+      class="type-normal text-ink-muted mb-12 text-center"
+      html={network.body}
+    />
 
     <p class="text-ink-muted text-center tracking-widest font-semibold mb-8">
       {network.label}

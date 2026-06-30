@@ -1,5 +1,6 @@
 ---
 import PrincipalTitle from './ui/PrincipalTitle.astro';
+import RichText from './ui/RichText.astro';
 
 interface TeamMember {
   id: string;
@@ -52,9 +53,7 @@ const photoPath = (id: string) => `/images/team-${id}.webp`;
                 {member.role}
               </p>
               
-              <p class="type-normal text-ink-muted max-w-prose">
-                {member.bio}
-              </p>
+                <RichText class="type-normal text-ink-muted max-w-prose" html={member.bio} />
             </div>
           </article>
         ))
@@ -78,7 +77,8 @@ const photoPath = (id: string) => `/images/team-${id}.webp`;
                   {member.role}
                 </p>
               </div>            
-            <p class="text-md ">{member.bio}</p>
+            
+              <RichText class="text-md" html={member.bio} />
           </article>
         ))
       }

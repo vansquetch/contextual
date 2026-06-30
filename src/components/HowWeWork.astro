@@ -1,5 +1,6 @@
 ---
 import PrincipalTitle from "./ui/PrincipalTitle.astro";
+import RichText from "./ui/RichText.astro";
 
 interface HowItem {
   id: string;
@@ -27,7 +28,7 @@ const { how } = Astro.props;
         how.items.map((item, i) => (
           <div class={`${i === 1 ? "bg-secondary-500" : ""} p-8 md:p-10`}>
             <h3 class="mb-4 type-t4 max-w-52 leading-1">{item.title}</h3>
-            <p class="type-normal">{item.body}</p>
+            <RichText class="type-normal" html={item.body} />
           </div>
         ))
       }

@@ -1,6 +1,7 @@
 ---
 import type { HeroContent } from "../i18n/getContent";
 import PrincipalTitle from "./ui/PrincipalTitle.astro";
+import RichText from "./ui/RichText.astro";
 
 interface Props {
   hero: HeroContent;
@@ -21,8 +22,8 @@ const { hero } = Astro.props;
 
       <!-- Body copy -->
       <div class="flex flex-col gap-4 mb-10 max-w-lg">
-        <p class="type-normal text-ink-muted">{hero.body}</p>
-        <p class="type-normal text-ink-muted">{hero.body2}</p>
+        <RichText class="type-normal text-ink-muted" html={hero.body} />
+        <RichText class="type-normal text-ink-muted" html={hero.body2} />
       </div>
 
       <!-- CTA -->
