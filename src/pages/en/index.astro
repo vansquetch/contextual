@@ -11,21 +11,26 @@ import Network from "../../components/Network.astro";
 import Contact from "../../components/Contact.astro";
 import Footer from "../../components/Footer.astro";
 import { getContent } from "../../i18n/getContent";
+import { getContentMedia } from "../../services/content.service";
 
 const lang = "en";
 const c = await getContent(lang);
+const m = await getContentMedia();
 ---
 
-<BaseLayout lang={lang} title="Contextual — Designing solutions to complex public problems">
+<BaseLayout
+  lang={lang}
+  title="Contextual — Designing solutions to complex public problems"
+>
   <Navbar nav={c.nav} lang={lang} />
   <main>
-    <Hero hero={c.hero} />
+    <Hero hero={c.hero} media={m.hero} />
     <WhatWeDo what={c.what} />
     <Solutions solutions={c.solutions} />
     <HowWeWork how={c.how} />
     <Areas areas={c.areas} />
-    <Team team={c.team} />
-    <Network network={c.network} />
+    <Team team={c.team} media={m.team} />
+    <Network network={c.network} media={m.network} />
     <Contact contact={c.contact} />
   </main>
   <Footer footer={c.footer} lang={lang} />
