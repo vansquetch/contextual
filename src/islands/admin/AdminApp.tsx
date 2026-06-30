@@ -55,12 +55,13 @@ export default function AdminApp() {
               guardando...
             </span>
           )}
-          {/* {contentMedia?.[section as keyof MediaContent] ?? (
+          {contentMedia?.[section as keyof MediaContent] && (
             <MediaEditor
               onChange={() => ""}
-              value={contentMedia?.[section as keyof MediaContent]}
+              value={contentMedia!!}
+              section={section}
             />
-          )} */}
+          )}
 
           <JsonEditor
             value={content?.[section as keyof SiteContent]}

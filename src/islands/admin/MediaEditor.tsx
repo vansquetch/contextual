@@ -1,27 +1,33 @@
+import { useState } from "react";
 import type { MediaContent } from "../../types/content.ts";
 import MediaField from "./MediaField.tsx";
 
 interface Props {
   value: MediaContent;
-  onChange(value: Record<string, string>): void;
+  section: string;
+  onChange(value: MediaContent): void;
 }
 
-export default function MediaEditor({ value, onChange }: Props) {
+export default function MediaEditor({ value, onChange, section }: Props) {
   return (
-    <div className="space-y-8">
-      {Object.entries(value).map(([key, image]) => (
-        <MediaField
-          key={key}
-          label={key}
-          value={image}
-          onChange={(newImage) =>
-            onChange({
-              ...value,
-              [key]: newImage,
-            })
-          }
-        />
-      ))}
+    <div className="space-y-8 flex flex-col p-4 bg-white mb-2">
+      <div className="flex gap-4">
+        {Object.entries(value[section as keyof MediaContent]).map(
+          ([key, image]) => (
+            <MediaField
+              key={key}
+              label={key}
+              value={image}
+              onChange={(newImage) =>
+                onChange({
+                  ...value,
+                  [key]: newImage,
+                })
+              }
+            />
+          ),
+        )}
+      </div>
     </div>
   );
 }
