@@ -1,4 +1,3 @@
-import type { Lang, SiteContent } from "../../types/content.ts";
 import Topbar from "./Topbar.tsx";
 
 import type { ReactNode } from "react";
