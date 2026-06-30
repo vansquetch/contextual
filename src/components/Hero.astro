@@ -1,13 +1,16 @@
 ---
 import type { HeroContent } from "../i18n/getContent";
+import { getImageUrl } from "../services/image.service";
+import type { MediaContent } from "../types/content";
 import PrincipalTitle from "./ui/PrincipalTitle.astro";
 import RichText from "./ui/RichText.astro";
 
 interface Props {
   hero: HeroContent;
+  media: MediaContent["hero"];
 }
 
-const { hero } = Astro.props;
+const { hero, media } = Astro.props;
 ---
 
 <section id="hero" class="relative min-h-[88vh] overflow-hidden pb-10">
@@ -50,7 +53,7 @@ const { hero } = Astro.props;
       </a>
     </div>
     <div class="pl-5 hidden md:block">
-      <img src="/images/hero-city.webp" class="max-w-md object-cover" />
+      <img src={getImageUrl(media.image)} class="max-w-md object-cover" />
     </div>
   </div>
 </section>

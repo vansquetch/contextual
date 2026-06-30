@@ -17,7 +17,7 @@ export default function Sidebar({
   );
 
   return (
-    <aside className="flex flex-col border-r border-secondary-300 bg-white">
+    <aside className="flex flex-col border-r border-secondary-300 bg-white sm:static">
       <div className="border-b border-secondary-300 p-8 hidden sm:block">
         <h1 className="type-medium">Contextual CMS</h1>
 

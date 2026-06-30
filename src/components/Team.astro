@@ -1,4 +1,6 @@
 ---
+import { getImageUrl } from '../services/image.service';
+import type { MediaContent } from '../types/content';
 import PrincipalTitle from './ui/PrincipalTitle.astro';
 import RichText from './ui/RichText.astro';
 
@@ -11,13 +13,13 @@ interface TeamMember {
 
 interface Props {
   team: { title: string; members: TeamMember[] };
+  media: MediaContent["hero"];
 }
 
-const { team } = Astro.props;
+const { team,media } = Astro.props;
 
 // Map member id to placeholder image path
 // Replace with real photos: /images/team-{id}.jpg
-const photoPath = (id: string) => `/images/team-${id}.webp`;
 ---
 
 <section id="team" class="section-gap bg-surface">
@@ -36,7 +38,7 @@ const photoPath = (id: string) => `/images/team-${id}.webp`;
             <!-- Photo -->
             <div class="shrink-0 w-full md:w-80 h-auto">
               <img
-                src={photoPath(member.id)}
+                src={getImageUrl(media[member.id as keyof typeof media])}
                 alt={member.name}
                 class="w-full h-full object-contain"
                 loading="lazy"
