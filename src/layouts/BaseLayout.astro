@@ -14,10 +14,12 @@ const { lang, title = "Contextual" } = Astro.props;
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content={lang === "es"
-      ? "Contextual — Diseñamos y habilitamos soluciones a problemas públicos complejos."
-      : "Contextual — Designing and enabling solutions to complex public problems."
-    } />
+    <meta
+      name="description"
+      content={lang === "es"
+        ? "Contextual — Diseñamos y habilitamos soluciones a problemas públicos complejos."
+        : "Contextual — Designing and enabling solutions to complex public problems."}
+    />
     <title>{title}</title>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   </head>
@@ -25,3 +27,22 @@ const { lang, title = "Contextual" } = Astro.props;
     <slot />
   </body>
 </html>
+
+<script is:inline>
+  (function () {
+    const saved = document.cookie
+      .split("; ")
+      .find((r) => r.startsWith("lang="))
+      ?.split("=")[1];
+
+    const path = window.location.pathname;
+    const onEn = path.startsWith("/en");
+
+    if (saved === "en" && !onEn) {
+      window.location.replace("/en/");
+    } else if (saved === "es" && onEn) {
+      window.location.replace("/");
+    }
+    // Si no hay cookie guardada, no redirige — el usuario ve el idioma de la URL
+  })();
+</script>
