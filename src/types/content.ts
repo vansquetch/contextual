@@ -76,3 +76,9 @@ export type MediaContent = {
     world: string;
   };
 };
+
+export type ConfigContent = {
+  footer: {
+    social: { x: string; instagram: string; youtube: string; linkedin: string };
+  };
+};

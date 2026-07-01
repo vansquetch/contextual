@@ -37,6 +37,8 @@ const { lang, title = "Contextual" } = Astro.props;
 
     const path = window.location.pathname;
     const onEn = path.startsWith("/en");
+    const onAdmin = path.startsWith("/admin");
+    if (onAdmin) return;
     if (saved === "en" && !onEn) {
       window.location.replace("/en/");
     } else if (saved === "es" && onEn) {

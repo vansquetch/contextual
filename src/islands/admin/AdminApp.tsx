@@ -1,4 +1,8 @@
-import type { MediaContent, SiteContent } from "../../types/content.ts";
+import type {
+  ConfigContent,
+  MediaContent,
+  SiteContent,
+} from "../../types/content.ts";
 
 import AdminLayout from "./AdminLayout";
 import Sidebar from "./Sidebar.tsx";
@@ -13,11 +17,13 @@ export default function AdminApp() {
   const {
     content,
     contentMedia,
+    contentConfig,
     loading,
     saving,
     lang,
     setLang,
     updateContent,
+    updateContentConfig,
     section,
     setSection,
   } = useContent();
@@ -50,7 +56,7 @@ export default function AdminApp() {
         <div className="p-20">Cargando...</div>
       ) : (
         <>
-          {saving ?? (
+          {saving && (
             <span className="text-sm text-ink-muted rounded-full bg-gray-100 p-2">
               guardando...
             </span>
@@ -68,6 +74,16 @@ export default function AdminApp() {
             onChange={(value) => {
               updateContent((content) => ({
                 ...content,
+
+                [section]: value,
+              }));
+            }}
+          />
+          <JsonEditor
+            value={contentConfig?.[section as keyof ConfigContent]}
+            onChange={(value) => {
+              updateContentConfig((contentConfig) => ({
+                ...contentConfig,
 
                 [section]: value,
               }));

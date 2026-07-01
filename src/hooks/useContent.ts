@@ -1,15 +1,25 @@
 import { useEffect, useState } from "react";
-import type { Lang, MediaContent, SiteContent } from "../types/content";
+import type {
+  ConfigContent,
+  Lang,
+  MediaContent,
+  SiteContent,
+} from "../types/content";
 import {
   getContent,
+  getContentConfig,
   getContentMedia,
   saveContent,
+  saveContentConfig,
 } from "../services/content.service";
 import { useDebounce } from "./useDebounce";
 
 export function useContent() {
   const [lang, setLang] = useState<Lang>("es");
   const [content, setContent] = useState<SiteContent | null>(null);
+  const [contentConfig, setContentConfig] = useState<ConfigContent | null>(
+    null,
+  );
   const [contentMedia, setContentMedia] = useState<MediaContent | null>(null);
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
@@ -21,7 +31,9 @@ export function useContent() {
       setLoading(true);
       const json = await getContent(lang);
       const media = await getContentMedia();
+      const config = await getContentConfig();
       setContentMedia(media);
+      setContentConfig(config);
       setContent(json);
       setLoading(false);
       setSaved(true);
@@ -30,6 +42,7 @@ export function useContent() {
   }, [lang]);
 
   const debouncedContent = useDebounce(content, 1200);
+  const debouncedContentConfig = useDebounce(contentConfig, 1200);
 
   useEffect(() => {
     if (!debouncedContent) return;
@@ -43,9 +56,31 @@ export function useContent() {
     save();
   }, [debouncedContent]);
 
+  useEffect(() => {
+    if (!debouncedContentConfig) return;
+    if (loading) return;
+    async function save() {
+      setSaving(true);
+      console.log("saving:" + debouncedContentConfig);
+      await saveContentConfig(debouncedContentConfig as ConfigContent);
+      setSaving(false);
+      setSaved(true);
+    }
+    save();
+  }, [debouncedContentConfig]);
+
   function updateContent(updater: (content: SiteContent) => SiteContent) {
     setSaved(false);
     setContent((old) => {
+      if (!old) return old;
+      return updater(old);
+    });
+  }
+  function updateContentConfig(
+    updater: (content: ConfigContent) => ConfigContent,
+  ) {
+    setSaved(false);
+    setContentConfig((old) => {
       if (!old) return old;
       return updater(old);
     });
@@ -59,7 +94,9 @@ export function useContent() {
     saved,
     lang,
     section,
+    contentConfig,
     updateContent,
+    updateContentConfig,
     setLang,
     setSection,
   };

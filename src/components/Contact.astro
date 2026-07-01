@@ -4,6 +4,7 @@ import XIcon from "./ui/icons/XIcon.astro";
 import InstagramIcon from "./ui/icons/InstagramIcon.astro";
 import YoutubeIcon from "./ui/icons/YoutubeIcon.astro";
 import LinkedinIcon from "./ui/icons/LinkedinIcon.astro";
+import type { ConfigContent } from "../types/content";
 
 interface ContactContent {
   title: string;
@@ -15,9 +16,10 @@ interface ContactContent {
 interface Props {
   contact: ContactContent;
   lang?: "es" | "en";
+  data: ConfigContent["footer"];
 }
 
-const { contact, lang = "es" } = Astro.props;
+const { contact, lang = "es", data } = Astro.props;
 
 const successMsg =
   lang === "es"
@@ -213,10 +215,10 @@ const errorMsg =
         <div
           class="flex justify-center sm:justify-start items-center gap-2 pb-5"
         >
-          <XIcon />
-          <InstagramIcon />
-          <YoutubeIcon />
-          <LinkedinIcon />
+          <a target="_blank" href={data.social.x}><XIcon /></a>
+          <a target="_blank" href={data.social.instagram}><InstagramIcon /></a>
+          <a target="_blank" href={data.social.youtube}><YoutubeIcon /></a>
+          <a target="_blank" href={data.social.linkedin}><LinkedinIcon /></a>
         </div>
         <address class="not-italic text-ink-muted text-sm">
           <span>Contextual<br />Washington, DC</span>

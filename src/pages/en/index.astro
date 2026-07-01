@@ -11,11 +11,15 @@ import Network from "../../components/Network.astro";
 import Contact from "../../components/Contact.astro";
 import Footer from "../../components/Footer.astro";
 import { getContent } from "../../i18n/getContent";
-import { getContentMedia } from "../../services/content.service";
+import {
+  getContentConfig,
+  getContentMedia,
+} from "../../services/content.service";
 
 const lang = "en";
 const c = await getContent(lang);
 const m = await getContentMedia();
+const conf = await getContentConfig();
 ---
 
 <BaseLayout
@@ -31,7 +35,7 @@ const m = await getContentMedia();
     <Areas areas={c.areas} />
     <Team team={c.team} media={m.team} />
     <Network network={c.network} media={m.network} />
-    <Contact contact={c.contact} />
+    <Contact contact={c.contact} data={conf.footer} />
   </main>
   <Footer footer={c.footer} lang={lang} />
 </BaseLayout>
