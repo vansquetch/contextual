@@ -67,20 +67,15 @@ const { team,media } = Astro.props;
       {
         team.members.slice(2).map((member) => (
           <article class="flex flex-col gap-4 p-4 rounded-md  ">
-
-
-              
               <div>
-               
                 <h3 class="type-t4  text-center mb-2">
                   {member.name}
                 </h3>
                 <p class="text-xs font-semibold uppercase tracking-widest mb-1 text-center">
                   {member.role}
                 </p>
-              </div>            
-            
-              <RichText class="text-md" html={member.bio} />
+              </div>
+              <RichText class="text-md text-ink-muted" html={member.bio} />
           </article>
         ))
       }
