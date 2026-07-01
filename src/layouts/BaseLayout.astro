@@ -21,7 +21,7 @@ const { lang, title = "Contextual" } = Astro.props;
         : "Contextual — Designing and enabling solutions to complex public problems."}
     />
     <title>{title}</title>
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.webp" />
   </head>
   <body>
     <slot />
@@ -36,9 +36,7 @@ const { lang, title = "Contextual" } = Astro.props;
       ?.split("=")[1];
 
     const path = window.location.pathname;
-    const onAdmin = path.startsWith("/admin");
     const onEn = path.startsWith("/en");
-    if (onAdmin) return;
     if (saved === "en" && !onEn) {
       window.location.replace("/en/");
     } else if (saved === "es" && onEn) {
