@@ -1,5 +1,10 @@
 export type Lang = "es" | "en";
 
+export type ImageField = {
+  type: "image";
+  content: string;
+};
+
 export type NavContent = {
   what: string;
   solutions: string;
@@ -35,6 +40,12 @@ export type TeamMember = {
   name: string;
   role: string;
   bio: string;
+  photo: ImageField;
+};
+export type NetworkItem = {
+  id: string;
+  title: string;
+  image: ImageField;
 };
 
 export type SiteContent = {
@@ -45,7 +56,12 @@ export type SiteContent = {
   how: { title: string; items: HowItem[] };
   areas: { title: string; items: string[] };
   team: { title: string; members: TeamMember[] };
-  network: { title: string; body: string; label: string };
+  network: {
+    title: string;
+    body: string;
+    label: string;
+    items: NetworkItem[];
+  };
   contact: {
     title: string;
     subtitle: string;

@@ -33,7 +33,7 @@ export default function RichTextEditor({ value, onChange }: Props) {
     editorProps: {
       attributes: {
         class:
-          "min-h-[180px] rounded-lg border border-gray-300 p-4 focus:outline-none",
+          "min-h-[100px] rounded-lg border border-gray-300 p-4 focus:outline-none",
       },
     },
 

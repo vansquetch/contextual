@@ -53,7 +53,7 @@ export default function AdminApp() {
       <h1 className="mb-4 text-3xl font-bold">{section}</h1>
 
       {loading ? (
-        <div className="p-20">Cargando...</div>
+        <div className="p-10">Cargando...</div>
       ) : (
         <>
           {saving && (
@@ -71,20 +71,17 @@ export default function AdminApp() {
 
           <JsonEditor
             value={content?.[section as keyof SiteContent]}
+            pathPrefix={section}
             onChange={(value) => {
-              updateContent((content) => ({
-                ...content,
-
-                [section]: value,
-              }));
+              updateContent((content) => ({ ...content, [section]: value }));
             }}
           />
           <JsonEditor
             value={contentConfig?.[section as keyof ConfigContent]}
+            pathPrefix={section}
             onChange={(value) => {
               updateContentConfig((contentConfig) => ({
                 ...contentConfig,
-
                 [section]: value,
               }));
             }}

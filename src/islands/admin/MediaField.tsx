@@ -5,9 +5,19 @@ interface Props {
   label: string;
   value: string;
   onChange(value: string): void;
+  /** Fallback usado solo si `value` está vacío (imagen nueva, sin ruta previa). */
+  folder?: string;
+  /** Fallback usado solo si `value` está vacío (imagen nueva, sin ruta previa). */
+  filename?: string;
 }
 
-export default function MediaField({ label, value, onChange }: Props) {
+export default function MediaField({
+  label,
+  value,
+  onChange,
+  folder: folderHint,
+  filename: filenameHint,
+}: Props) {
   const [loading, setLoading] = useState(false);
   const [imageVersion, setImageVersion] = useState(0);
   const inputId = useId();
@@ -18,11 +28,15 @@ export default function MediaField({ label, value, onChange }: Props) {
 
     setLoading(true);
 
-    const folder = value.includes("/") ? value.split("/")[0] : "";
+    const folder = value.includes("/")
+      ? value.split("/")[0]
+      : (folderHint ?? "");
 
     const filename = value.includes("/")
       ? value.split("/")[1].replace(".webp", "")
-      : value.replace(".webp", "");
+      : value.replace(".webp", "") ||
+        filenameHint ||
+        Math.random().toString(36).slice(2, 8);
 
     const path = await uploadImage(file, folder, filename);
 
@@ -37,17 +51,23 @@ export default function MediaField({ label, value, onChange }: Props) {
 
       <label
         htmlFor={inputId}
-        className="relative block h-40 cursor-pointer overflow-hidden rounded border border-gray-200 group"
+        className="relative block h-40 cursor-pointer overflow-hidden rounded border border-gray-200 group bg-gray-50"
       >
-        <img
-          src={`${getImageUrl(value)}?v=${imageVersion}`}
-          alt={label}
-          className="h-full w-full object-contain transition group-hover:brightness-75"
-        />
+        {value ? (
+          <img
+            src={`${getImageUrl(value)}?v=${imageVersion}`}
+            alt={label}
+            className="h-full w-full object-contain transition group-hover:brightness-75"
+          />
+        ) : (
+          <div className="flex h-full w-full items-center justify-center text-sm text-gray-400">
+            Sin imagen
+          </div>
+        )}
 
         <div className="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 transition-opacity group-hover:opacity-100">
           <span className="rounded bg-white px-3 py-1 text-sm font-medium">
-            Click para cambiar
+            Click para {value ? "cambiar" : "subir"}
           </span>
         </div>
       </label>
