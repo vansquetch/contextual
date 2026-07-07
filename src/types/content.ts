@@ -4,6 +4,13 @@ export type LocalizedText = {
   es: string;
   en: string;
 };
+export type Localized<T> = T extends LocalizedText
+  ? string
+  : T extends Array<infer U>
+    ? Localized<U>[]
+    : T extends object
+      ? { [K in keyof T]: Localized<T[K]> }
+      : T;
 
 export type ImageField = {
   type: "image";
@@ -61,7 +68,11 @@ export type SiteContent = {
   solutions: { title: LocalizedText; items: ServiceItem[] };
   how: { title: LocalizedText; items: HowItem[] };
   areas: { title: LocalizedText; items: LocalizedText[] };
-  team: { title: LocalizedText; members: TeamMember[] };
+  team: {
+    title: LocalizedText;
+    principal: TeamMember[];
+    members: TeamMember[];
+  };
   network: {
     title: LocalizedText;
     body: LocalizedText;

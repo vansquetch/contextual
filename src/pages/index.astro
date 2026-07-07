@@ -14,10 +14,11 @@ import {
   getContent,
   getContentConfig,
   getContentMedia,
+  localizeContent,
 } from "../services/content.service";
 
 const lang = "es";
-const c = await getContent(lang);
+const c = localizeContent(await getContent(), lang);
 const m = await getContentMedia();
 const conf = await getContentConfig();
 ---

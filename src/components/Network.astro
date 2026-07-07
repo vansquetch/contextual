@@ -1,39 +1,18 @@
 ---
+import type { SiteContent, Localized } from "../types/content";
 import { getImageUrl } from "../services/image.service";
-import type { MediaContent } from "../types/content";
 import PrincipalTitle from "./ui/PrincipalTitle.astro";
 import RichText from "./ui/RichText.astro";
 
 interface Props {
-  network: { title: string; body: string; label: string };
-  media: MediaContent["network"];
+  network: Localized<SiteContent["network"]>;
 }
 
-const { network, media } = Astro.props;
-
-// Partner logos — replace src with actual logo files in /public/logos/
-const partners = [
-  {
-    id: "nyu",
-    name: "NYU — Center on International Cooperation",
-    logo: getImageUrl(media.nyu),
-  },
-  {
-    id: "peace",
-    name: "Peace in Our Cities",
-    logo: getImageUrl(media.peace),
-  },
-  {
-    id: "worldjustice",
-    name: "World Justice Project",
-    logo: getImageUrl(media.world),
-  },
-];
+const { network } = Astro.props;
 ---
 
 <section id="network" class="section-gap bg-secondary-100">
   <div class="container-site">
-    <!-- Section header -->
     <div class="mb-10 text-center">
       <PrincipalTitle>{network.title}</PrincipalTitle>
     </div>
@@ -47,17 +26,15 @@ const partners = [
       {network.label}
     </p>
 
-    <!-- Logo strip -->
     <div class="flex flex-wrap items-center justify-center gap-12">
       {
-        partners.map((p) => (
-          <div class="h-14 flex items-center opacity-60 hover:opacity-100 transition-opacity duration-200 grayscale hover:grayscale-0">
+        network.items.map((partner) => (
+          <div class="flex h-14 items-center opacity-60 transition-opacity duration-200 grayscale hover:opacity-100 hover:grayscale-0">
             <img
-              src={p.logo}
-              alt={p.name}
+              src={getImageUrl(partner.image.content)}
+              alt={partner.title}
               class="h-full w-auto object-contain"
               loading="lazy"
-              onerror={`this.parentElement.innerHTML='<span class="type-normal text-sm text-ink-muted font-medium">${p.name}</span>'`}
             />
           </div>
         ))

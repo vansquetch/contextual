@@ -10,14 +10,15 @@ import Team from "../../components/Team.astro";
 import Network from "../../components/Network.astro";
 import Contact from "../../components/Contact.astro";
 import Footer from "../../components/Footer.astro";
-import { getContent } from "../../i18n/getContent";
 import {
+  getContent,
   getContentConfig,
   getContentMedia,
+  localizeContent,
 } from "../../services/content.service";
 
-const lang = "en";
-const c = await getContent(lang);
+const lang = "es";
+const c = localizeContent(await getContent(), lang);
 const m = await getContentMedia();
 const conf = await getContentConfig();
 ---
@@ -33,7 +34,7 @@ const conf = await getContentConfig();
     <Solutions solutions={c.solutions} />
     <HowWeWork how={c.how} />
     <Areas areas={c.areas} />
-    <Team team={c.team} media={m.team} />
+    <!-- <Team team={c.team} media={m.team} /> -->
     <Network network={c.network} media={m.network} />
     <Contact contact={c.contact} data={conf.footer} />
   </main>

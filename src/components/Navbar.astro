@@ -1,9 +1,9 @@
 ---
-import type { NavContent } from "../i18n/getContent";
+import type { NavContent,Localized } from "../types/content";
 import ArrowUp from "./ui/icons/ArrowUp.astro";
 
 interface Props {
-  nav: NavContent;
+  nav: Localized<NavContent>;
   lang: "es" | "en";
 }
 

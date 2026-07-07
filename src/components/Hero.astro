@@ -1,12 +1,11 @@
 ---
-import type { HeroContent } from "../i18n/getContent";
 import { getImageUrl } from "../services/image.service";
-import type { MediaContent } from "../types/content";
+import type { HeroContent, MediaContent,Localized } from "../types/content";
 import PrincipalTitle from "./ui/PrincipalTitle.astro";
 import RichText from "./ui/RichText.astro";
 
 interface Props {
-  hero: HeroContent;
+  hero: Localized<HeroContent>;
   media: MediaContent["hero"];
 }
 
