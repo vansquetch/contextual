@@ -19,7 +19,9 @@ export default function MediaField({
   filename: filenameHint,
 }: Props) {
   const [loading, setLoading] = useState(false);
-  const [imageVersion, setImageVersion] = useState(0);
+  const [imageVersion, setImageVersion] = useState(
+    Math.round(Math.random() * 500),
+  );
   const inputId = useId();
 
   async function handleFile(e: React.ChangeEvent<HTMLInputElement>) {
@@ -71,7 +73,6 @@ export default function MediaField({
           </span>
         </div>
       </label>
-
       <input
         id={inputId}
         type="file"
@@ -79,7 +80,6 @@ export default function MediaField({
         className="hidden"
         onChange={handleFile}
       />
-
       {loading && <p className="text-sm text-gray-500">Subiendo...</p>}
     </div>
   );

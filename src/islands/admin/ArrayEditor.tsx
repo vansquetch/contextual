@@ -2,12 +2,14 @@ import { useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import JsonEditor from "./JsonEditor";
 import { generateUniqueId } from "../../lib/id";
+import type { Lang } from "../../types/content";
 
 interface Props {
   label?: string;
   value: any[];
   onChange(value: any[]): void;
   pathPrefix?: string;
+  lang?: Lang;
 }
 
 /**
@@ -34,11 +36,22 @@ function resetForNewItem(item: any): any {
   return item;
 }
 
+/** Extrae un texto "semilla" (para el slug del id) de un campo que puede ser
+ * un string plano o un {es,en} bilingüe. */
+function extractSeedText(field: any, lang?: Lang): string | undefined {
+  if (typeof field === "string") return field;
+  if (field && typeof field === "object") {
+    return field[lang ?? "es"] ?? field.es ?? field.en;
+  }
+  return undefined;
+}
+
 export default function ArrayEditor({
   label,
   value,
   onChange,
   pathPrefix,
+  lang,
 }: Props) {
   const canRemove = value.length > 1;
   const [highlightedIndex, setHighlightedIndex] = useState<number | null>(null);
@@ -62,7 +75,7 @@ export default function ArrayEditor({
       "id" in templateSource
     ) {
       const existingIds = value.map((v) => v?.id).filter(Boolean);
-      const seed = draft.title ?? draft.name;
+      const seed = extractSeedText(draft.title ?? draft.name, lang);
       draft.id = generateUniqueId(seed, existingIds);
     }
 
@@ -134,6 +147,7 @@ export default function ArrayEditor({
             <JsonEditor
               value={item}
               pathPrefix={pathPrefix}
+              lang={lang}
               onChange={(newItem) => {
                 const copy = [...value];
                 copy[index] = newItem;

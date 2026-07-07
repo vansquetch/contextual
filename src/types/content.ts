@@ -1,82 +1,99 @@
 export type Lang = "es" | "en";
 
+export type LocalizedText = {
+  es: string;
+  en: string;
+};
+
 export type ImageField = {
   type: "image";
   content: string;
 };
 
 export type NavContent = {
-  what: string;
-  solutions: string;
-  how: string;
-  areas: string;
-  team: string;
-  network: string;
-  contact: string;
-  cta: string;
+  what: LocalizedText;
+  solutions: LocalizedText;
+  how: LocalizedText;
+  areas: LocalizedText;
+  team: LocalizedText;
+  network: LocalizedText;
+  contact: LocalizedText;
+  cta: LocalizedText;
 };
 
 export type HeroContent = {
-  headline: string;
-  body: string;
-  body2: string;
-  cta: string;
+  headline: LocalizedText;
+  body: LocalizedText;
+  body2: LocalizedText;
+  cta: LocalizedText;
 };
 
 export type ServiceItem = {
   id: string;
-  title: string;
-  body: string;
+  title: LocalizedText;
+  body: LocalizedText;
 };
 
 export type HowItem = {
   id: string;
-  title: string;
-  body: string;
+  title: LocalizedText;
+  body: LocalizedText;
 };
 
 export type TeamMember = {
   id: string;
-  name: string;
-  role: string;
-  bio: string;
+  name: LocalizedText;
+  role: LocalizedText;
+  bio: LocalizedText;
   photo: ImageField;
 };
+
 export type NetworkItem = {
   id: string;
-  title: string;
+  title: LocalizedText;
   image: ImageField;
 };
 
 export type SiteContent = {
   nav: NavContent;
   hero: HeroContent;
-  what: { title: string; items: ServiceItem[] };
-  solutions: { title: string; items: ServiceItem[] };
-  how: { title: string; items: HowItem[] };
-  areas: { title: string; items: string[] };
-  team: { title: string; members: TeamMember[] };
+  what: { title: LocalizedText; items: ServiceItem[] };
+  solutions: { title: LocalizedText; items: ServiceItem[] };
+  how: { title: LocalizedText; items: HowItem[] };
+  areas: { title: LocalizedText; items: LocalizedText[] };
+  team: { title: LocalizedText; members: TeamMember[] };
   network: {
-    title: string;
-    body: string;
-    label: string;
+    title: LocalizedText;
+    body: LocalizedText;
+    label: LocalizedText;
     items: NetworkItem[];
   };
   contact: {
-    title: string;
-    subtitle: string;
+    title: LocalizedText;
+    subtitle: LocalizedText;
     fields: {
-      name: string;
-      surname: string;
-      email: string;
-      message: string;
+      name: LocalizedText;
+      surname: LocalizedText;
+      email: LocalizedText;
+      message: LocalizedText;
     };
-    cta: string;
+    cta: LocalizedText;
   };
   footer: {
-    location: string;
-    email: string;
-    site: string;
+    location: LocalizedText;
+    email: string; // dato de contacto: igual en ambos idiomas
+    site: string; // dominio: igual en ambos idiomas
+  };
+};
+
+export type ConfigContent = {
+  footer: {
+    social: {
+      x: string;
+      instagram: string;
+      youtube: string;
+      linkedin: string;
+    };
   };
 };
 
@@ -90,11 +107,5 @@ export type MediaContent = {
     nyu: string;
     peace: string;
     world: string;
-  };
-};
-
-export type ConfigContent = {
-  footer: {
-    social: { x: string; instagram: string; youtube: string; linkedin: string };
   };
 };

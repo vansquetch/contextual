@@ -26,20 +26,23 @@ export function useContent() {
   const [saved, setSaved] = useState(true);
   const [section, setSection] = useState("hero");
 
+  // El contenido ya no está partido por idioma, así que se carga una sola vez.
   useEffect(() => {
     async function load() {
       setLoading(true);
-      const json = await getContent(lang);
-      const media = await getContentMedia();
-      const config = await getContentConfig();
+      const [json, media, config] = await Promise.all([
+        getContent(),
+        getContentMedia(),
+        getContentConfig(),
+      ]);
+      setContent(json);
       setContentMedia(media);
       setContentConfig(config);
-      setContent(json);
       setLoading(false);
       setSaved(true);
     }
     load();
-  }, [lang]);
+  }, []);
 
   const debouncedContent = useDebounce(content, 1200);
   const debouncedContentConfig = useDebounce(contentConfig, 1200);
@@ -49,7 +52,7 @@ export function useContent() {
     if (loading) return;
     async function save() {
       setSaving(true);
-      await saveContent(lang, debouncedContent as SiteContent);
+      await saveContent(debouncedContent as SiteContent);
       setSaving(false);
       setSaved(true);
     }
@@ -61,7 +64,6 @@ export function useContent() {
     if (loading) return;
     async function save() {
       setSaving(true);
-      console.log("saving:" + debouncedContentConfig);
       await saveContentConfig(debouncedContentConfig as ConfigContent);
       setSaving(false);
       setSaved(true);

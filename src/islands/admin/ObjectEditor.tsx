@@ -1,4 +1,5 @@
 import JsonEditor from "./JsonEditor";
+import type { Lang } from "../../types/content";
 
 interface Props {
   label?: string;
@@ -6,6 +7,7 @@ interface Props {
   onChange(value: any): void;
   pathPrefix?: string;
   idHint?: string;
+  lang?: Lang;
 }
 
 export default function ObjectEditor({
@@ -14,6 +16,7 @@ export default function ObjectEditor({
   onChange,
   pathPrefix,
   idHint,
+  lang,
 }: Props) {
   // Si este objeto tiene su propio id (ej. un TeamMember o NetworkItem),
   // se convierte en el idHint para sus campos hijos (ej. su campo de imagen).
@@ -32,6 +35,7 @@ export default function ObjectEditor({
             value={val}
             pathPrefix={pathPrefix}
             idHint={ownId}
+            lang={lang}
             onChange={(newValue) => {
               onChange({
                 ...value,

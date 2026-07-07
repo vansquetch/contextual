@@ -72,6 +72,7 @@ export default function AdminApp() {
           <JsonEditor
             value={content?.[section as keyof SiteContent]}
             pathPrefix={section}
+            lang={lang}
             onChange={(value) => {
               updateContent((content) => ({ ...content, [section]: value }));
             }}
@@ -79,6 +80,7 @@ export default function AdminApp() {
           <JsonEditor
             value={contentConfig?.[section as keyof ConfigContent]}
             pathPrefix={section}
+            lang={lang}
             onChange={(value) => {
               updateContentConfig((contentConfig) => ({
                 ...contentConfig,

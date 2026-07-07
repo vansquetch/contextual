@@ -1,6 +1,5 @@
 import type {
   ConfigContent,
-  Lang,
   MediaContent,
   SiteContent,
 } from "../types/content.ts";
@@ -8,12 +7,11 @@ import { supabase } from "../lib/supabase";
 
 const TABLE = "site_content";
 
-export async function getContent(lang: Lang): Promise<SiteContent> {
+export async function getContent(): Promise<SiteContent> {
   const { data, error } = await supabase
     .from(TABLE)
     .select("content")
     .eq("type", "static")
-    .eq("lang", lang)
     .single();
 
   if (error) throw error;
@@ -54,14 +52,13 @@ export async function saveContentConfig(contentConfig: ConfigContent) {
   if (error) throw error;
 }
 
-export async function saveContent(lang: Lang, content: SiteContent) {
+export async function saveContent(content: SiteContent) {
   const { error } = await supabase
     .from(TABLE)
     .update({
       content,
       updated_at: new Date().toISOString(),
     })
-    .eq("lang", lang)
     .eq("type", "static");
 
   if (error) throw error;
