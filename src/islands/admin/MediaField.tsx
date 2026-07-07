@@ -13,6 +13,7 @@ interface Props {
   folder?: string;
   /** Fallback usado solo si `value` está vacío (imagen nueva, sin ruta previa). */
   filename?: string;
+  eliminable?:boolean
 }
 
 export default function MediaField({
@@ -21,6 +22,7 @@ export default function MediaField({
   onChange,
   folder: folderHint,
   filename: filenameHint,
+  eliminable=true
 }: Props) {
   const [loading, setLoading] = useState(false);
   const [imageVersion, setImageVersion] = useState(0);
@@ -106,7 +108,7 @@ export default function MediaField({
       <div className="flex items-center justify-between">
         {loading && <p className="text-sm text-gray-500">Procesando...</p>}
 
-        {value && !loading && (
+        {value && eliminable && !loading && (
           <button
             type="button"
             onClick={handleClear}

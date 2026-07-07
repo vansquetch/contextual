@@ -18,6 +18,7 @@ export default function MediaEditor({ value, onChange, section }: Props) {
               key={key}
               label={key}
               value={image}
+              eliminable={false}
               onChange={(newImage) =>
                 onChange({
                   ...value,
