@@ -31,14 +31,16 @@ const { team } = Astro.props;
           <article class={`flex flex-col gap-4 p-4 rounded-md ${i==1?"bg-secondary-500 border border-secondary-400 md:flex-row-reverse":"md:flex-row"}`}>
             <!-- Photo -->
             <div class="shrink-0 w-full md:w-80 h-auto">
-              <img
-              
-                src={getImageUrl(member.photo.content)}
-                alt={member.name}
-                class="w-full h-full object-contain"
-                loading="lazy"
-                onerror="this.style.display='none'"
-              />
+               {member.photo.content!=""?(
+                <img
+                
+                  src={getImageUrl(member.photo.content)}
+                  alt={member.name}
+                  class="w-full h-full object-contain"
+                  loading="lazy"
+                  onerror="this.style.display='none'"
+                />
+              ):null}
             </div>
 
             <!-- Copy -->
@@ -63,15 +65,17 @@ const { team } = Astro.props;
         team.members.map((member) => (
           <article class="flex flex-col gap-4 p-4 rounded-md  ">
             {member.photo.content!=""?(
-            <div class="shrink-0 w-full md:w-20 h-auto">
-              <img
-              
-                src={getImageUrl(member.photo.content)}
-                alt={member.name}
-                class="w-full h-full object-contain"
-                loading="lazy"
-                onerror="this.style.display='none'"
-              />
+            <div class="flex justify-center">
+              <div class="shrink-0 w-full md:w-20 h-auto">
+                <img
+                
+                  src={getImageUrl(member.photo.content)}
+                  alt={member.name}
+                  class="w-full h-full object-contain"
+                  loading="lazy"
+                  onerror="this.style.display='none'"
+                />
+              </div>
             </div>
             ):null}
               <div>

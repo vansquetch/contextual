@@ -1,4 +1,8 @@
-import { getImageUrl, uploadImage } from "../../services/image.service";
+import {
+  deleteImage,
+  getImageUrl,
+  uploadImage,
+} from "../../services/image.service";
 import { useId, useState } from "react";
 
 interface Props {
@@ -19,9 +23,7 @@ export default function MediaField({
   filename: filenameHint,
 }: Props) {
   const [loading, setLoading] = useState(false);
-  const [imageVersion, setImageVersion] = useState(
-    Math.round(Math.random() * 500),
-  );
+  const [imageVersion, setImageVersion] = useState(0);
   const inputId = useId();
 
   async function handleFile(e: React.ChangeEvent<HTMLInputElement>) {
@@ -43,6 +45,25 @@ export default function MediaField({
     const path = await uploadImage(file, folder, filename);
 
     onChange(path);
+    setImageVersion((v) => v + 1);
+    setLoading(false);
+  }
+
+  async function handleClear() {
+    if (!value) return;
+    if (!confirm("¿Eliminar esta imagen? El campo quedará en blanco.")) return;
+
+    setLoading(true);
+
+    try {
+      await deleteImage(value);
+    } catch (err) {
+      // No bloquea la limpieza del campo si falla el borrado en Storage
+      // (ej. el archivo ya no existe, o hay un problema de permisos).
+      console.error("No se pudo borrar el archivo en Storage:", err);
+    }
+
+    onChange("");
     setImageVersion((v) => v + 1);
     setLoading(false);
   }
@@ -73,6 +94,7 @@ export default function MediaField({
           </span>
         </div>
       </label>
+
       <input
         id={inputId}
         type="file"
@@ -80,7 +102,20 @@ export default function MediaField({
         className="hidden"
         onChange={handleFile}
       />
-      {loading && <p className="text-sm text-gray-500">Subiendo...</p>}
+
+      <div className="flex items-center justify-between">
+        {loading && <p className="text-sm text-gray-500">Procesando...</p>}
+
+        {value && !loading && (
+          <button
+            type="button"
+            onClick={handleClear}
+            className="text-sm text-red-600"
+          >
+            Eliminar imagen
+          </button>
+        )}
+      </div>
     </div>
   );
 }

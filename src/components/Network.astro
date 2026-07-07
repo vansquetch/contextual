@@ -30,12 +30,14 @@ const { network } = Astro.props;
       {
         network.items.map((partner) => (
           <div class="flex h-14 items-center opacity-60 transition-opacity duration-200 grayscale hover:opacity-100 hover:grayscale-0">
-            <img
-              src={getImageUrl(partner.image.content)}
-              alt={partner.title}
-              class="h-full w-auto object-contain"
-              loading="lazy"
-            />
+            {partner.image.content != "" ? (
+              <img
+                src={getImageUrl(partner.image.content)}
+                alt={partner.title}
+                class="h-full w-auto object-contain"
+                loading="lazy"
+              />
+            ) : null}
           </div>
         ))
       }

@@ -25,6 +25,14 @@ export function getImageUrl(path: string) {
   return data.publicUrl;
 }
 
+export async function deleteImage(path: string) {
+  if (!path) return;
+
+  const { error } = await supabase.storage.from("contextual").remove([path]);
+
+  if (error) throw error;
+}
+
 export async function resizeImage(
   file: File,
   width: number,
