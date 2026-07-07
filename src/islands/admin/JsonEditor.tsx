@@ -3,7 +3,7 @@ import ObjectEditor from "./ObjectEditor";
 import ArrayEditor from "./ArrayEditor";
 import LocalizedPrimitiveEditor from "./LocalizedPrimitiveEditor";
 import type { Lang } from "../../types/content";
-import ImageFieldEditor from "./ImageFieldeditor";
+import ImageFieldEditor from "./ImageFieldEditor.tsx";
 
 interface Props {
   label?: string;
