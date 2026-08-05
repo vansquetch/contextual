@@ -13,6 +13,11 @@ import {
   saveContentConfig,
 } from "../services/content.service";
 import { useDebounce } from "./useDebounce";
+import {
+  defaultConfigContent,
+  defaultSiteContent,
+} from "../lib/content/templates";
+import { reorderKeys } from "../utils/reorderKeys";
 
 export function useContent() {
   const [lang, setLang] = useState<Lang>("es");
@@ -35,9 +40,9 @@ export function useContent() {
         getContentMedia(),
         getContentConfig(),
       ]);
-      setContent(json);
+      setContent(reorderKeys(json, defaultSiteContent));
       setContentMedia(media);
-      setContentConfig(config);
+      setContentConfig(reorderKeys(config, defaultConfigContent));
       setLoading(false);
       setSaved(true);
     }

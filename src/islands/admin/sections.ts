@@ -2,14 +2,14 @@
 
 export const sections = [
   {
-    key: "hero",
-    label: "Hero",
-    icon: "🚀",
-  },
-  {
     key: "nav",
     label: "Navegación",
     icon: "🧭",
+  },
+  {
+    key: "hero",
+    label: "Hero",
+    icon: "🚀",
   },
   {
     key: "what",
