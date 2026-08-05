@@ -21,7 +21,8 @@ export default function PrimitiveEditor({ label, value, onChange }: Props) {
     );
   }
 
-  const multiline = typeof value === "string" && value.length > 120;
+  const multiline =
+    (typeof value === "string" && value.length > 120) || label == "body";
 
   return (
     <div className="space-y-2">
