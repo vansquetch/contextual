@@ -29,7 +29,7 @@ export function useContent() {
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
   const [saved, setSaved] = useState(true);
-  const [section, setSection] = useState("hero");
+  const [section, setSection] = useState("nav");
 
   // El contenido ya no está partido por idioma, así que se carga una sola vez.
   useEffect(() => {
